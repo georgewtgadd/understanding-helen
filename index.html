@@ -677,6 +677,36 @@ header {
 }
 .clipboard-footer strong { color: rgba(255,255,255,0.7); }
 
+   .polaroid-frame {
+  background-color: white;
+  padding: 8px 8px 20px 8px; /* Thicker bottom border */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Subtle lift off the page */
+  border: 1px solid #ddd;
+  display: inline-block;
+  transform: rotate(-2deg); /* Optional: a slight tilt for that "tossed on the desk" look */
+  transition: transform 0.3s ease;
+}
+
+.polaroid-frame:hover {
+  transform: rotate(0deg) scale(1.05); /* Straightens and grows slightly on hover */
+}
+
+.polaroid-img {
+  width: 100px;  /* Adjust size as needed */
+  height: 100px;
+  object-fit: cover;
+  display: block;
+  border: 1px solid #eee;
+}
+
+.polaroid-caption {
+  font-family: "Courier New", Courier, monospace; /* Handwritten feel */
+  font-size: 0.75rem;
+  color: #555;
+  text-align: center;
+  margin-top: 8px;
+}
+
 /* ══════════════════════════════════════
    PAGE 3 — BRANCHING SCENARIO
 ══════════════════════════════════════ */
@@ -1087,24 +1117,25 @@ footer {
         <div class="clipboard-body">
 
           <!-- Patient identity -->
-          <div class="patient-header">
-            <div class="patient-photo" aria-label="Patient photograph placeholder">
-              <div class="patient-photo-placeholder">
-                <span class="icon" aria-hidden="true">👩</span>
-                <span>Photo</span>
-              </div>
-            </div>
-            <div class="patient-meta">
-              <div class="patient-name">Helen Marsh</div>
-              <div class="patient-dob">Date of Birth: 14 March 1950 &nbsp;·&nbsp; Age: 74 &nbsp;·&nbsp; Female</div>
-              <div class="patient-badges" role="list" aria-label="Patient status indicators">
-                <span class="badge badge-warn" role="listitem">Palliative Care</span>
-                <span class="badge badge-navy" role="listitem">DNR in Place</span>
-                <span class="badge badge-blue" role="listitem">Hospice at Home</span>
-                <span class="badge badge-green" role="listitem">Faith: Christian</span>
-              </div>
-            </div>
-          </div>
+<div class="patient-header">
+  <div class="patient-photo">
+    <div class="polaroid-frame">
+      <img src="images/thumbnail.png" alt="Photograph of Helen Marsh" class="polaroid-img">
+      <div class="polaroid-caption">H. Marsh</div>
+    </div>
+  </div>
+  
+  <div class="patient-meta">
+    <div class="patient-name">Helen Marsh</div>
+    <div class="patient-dob">Date of Birth: 14 March 1950 &nbsp;·&nbsp; Age: 74 &nbsp;·&nbsp; Female</div>
+    <div class="patient-badges" role="list" aria-label="Patient status indicators">
+      <span class="badge badge-warn" role="listitem">Palliative Care</span>
+      <span class="badge badge-navy" role="listitem">DNR in Place</span>
+      <span class="badge badge-blue" role="listitem">Hospice at Home</span>
+      <span class="badge badge-green" role="listitem">Faith: Christian</span>
+    </div>
+  </div>
+</div>
 
           <!-- Alert -->
           <div class="clipboard-alert" role="alert" aria-live="polite">
