@@ -5,8 +5,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Understanding Helen | St Barnabas Hospice</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
 
@@ -18,7 +19,7 @@
      HEADER
 ══════════════════════════════════════════════════════ -->
 <header role="banner">
-  <div class="brand">
+  <a href="index.html" class="brand" aria-label="St Barnabas Hospice — return to home">
     <div class="brand-logo">
       <img src="images/logo.jpg" alt="St Barnabas Hospice"
            style="width:100%; height:100%; object-fit:contain; display:block;">
@@ -27,7 +28,7 @@
       <span class="brand-name">St Barnabas Hospice</span>
       <span class="brand-tagline">E-Learning Platform</span>
     </div>
-  </div>
+  </a>
   <div class="module-label">
     <strong>Understanding Helen</strong>
     Person-Centred Care · Module 1
@@ -68,7 +69,23 @@
     <div class="nav-step-num" aria-hidden="true">4</div>
     <span class="nav-step-label">Helen's Living Room</span>
   </button>
+
+  <div class="nav-divider" aria-hidden="true"></div>
+
+  <button class="nav-step" id="nav-5" onclick="navClick(5)"
+          aria-label="Step 5: Four Pillars of Wellness" disabled>
+    <div class="nav-step-num" aria-hidden="true">5</div>
+    <span class="nav-step-label">Four Pillars</span>
+  </button>
 </nav>
+
+<!-- Progress bar -->
+<div class="module-progress-bar" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" aria-label="Module completion progress">
+  <div class="progress-track">
+    <div class="progress-fill" id="progress-fill"></div>
+  </div>
+  <div class="progress-label" id="progress-label" aria-live="polite">0% complete</div>
+</div>
 
 
 <!-- ══════════════════════════════════════════════════════
@@ -87,7 +104,7 @@
         <div class="intro-eyebrow" role="note">Module Introduction</div>
         <h1 class="intro-heading">Meet <em>Helen.</em><br>Her story matters.</h1>
         <p class="intro-desc">
-          Helen is 74 years old and is receiving palliative care at home. She has a family who love her
+          Helen is 75 years old and is receiving palliative care at home. She has a family who love her
           deeply — and a family who are struggling. Before your first visit, take a moment to hear from
           Helen herself.
         </p>
@@ -160,7 +177,7 @@
             </div>
             <div class="patient-meta">
               <div class="patient-name">Helen Marsh</div>
-              <div class="patient-dob">Date of Birth: 14 March 1950 &nbsp;·&nbsp; Age: 74 &nbsp;·&nbsp; Female</div>
+              <div class="patient-dob">Date of Birth: 14 March 1951 &nbsp;·&nbsp; Age: 75 &nbsp;·&nbsp; Female</div>
               <div class="patient-badges" role="list" aria-label="Patient status indicators">
                 <span class="badge badge-warn"  role="listitem">Palliative Care</span>
                 <span class="badge badge-navy"  role="listitem">DNR in Place</span>
@@ -175,7 +192,7 @@
             <p>
               <strong>Clinical Alert:</strong> Helen has Stage 4 ovarian cancer with recent pulmonary
               metastases. She experiences episodes of breathlessness requiring oxygen therapy. Her
-              prognosis is weeks to months. Family members are aware but her daughter Sophie (16) has
+              prognosis is weeks to months. Family members are aware but their granddaughter Sophie (14) has
               not been formally told.
             </p>
           </div>
@@ -206,11 +223,11 @@
               <div class="info-section-title">Household</div>
               <div class="info-row">
                 <span class="info-label">Primary carer</span>
-                <span class="info-value">Simon Marsh (son, 41)</span>
+                <span class="info-value">Simon Marsh (husband, 68)</span>
               </div>
               <div class="info-row">
                 <span class="info-label">Also at home</span>
-                <span class="info-value">Sophie Marsh (16)</span>
+                <span class="info-value">Sophie Marsh (14)</span>
               </div>
               <div class="info-row">
                 <span class="info-label">Simon's work</span>
@@ -237,8 +254,7 @@
               <p class="info-paragraph">
                 Simon is showing signs of <strong>carer strain</strong> — working overtime to cover
                 bills while managing Helen's care. Sophie is <strong>exhibiting withdrawal
-                behaviours</strong> and has not spoken about her grandmother's illness or her mother's
-                previous death. Consider referral to youth bereavement services.
+                behaviours</strong> and has not spoken about her grandmother's illness. Consider referral to youth bereavement services.
               </p>
             </div>
 
@@ -274,8 +290,8 @@
       <!-- Left: scene image + context -->
       <div class="scenario-left">
         <div class="scenario-video" role="img" aria-label="Scene 1 — arriving at the family home">
-          <img src="images/scene2.png"
-               alt="The family home — Simon in the kitchen surrounded by bills, Helen in her armchair breathing heavily, Sophie's door shut"
+          <img src="images/simon_helen.png"
+               alt="Simon and Helen at home — Simon looking exhausted, Helen in her armchair breathing heavily, Sophie's bedroom door shut"
                style="width:100%; height:100%; object-fit:cover; display:block; border-radius:14px;">
         </div>
         <div class="scenario-context">
@@ -290,54 +306,9 @@
         </div>
       </div>
 
-      <!-- Right: choices -->
+      <!-- Right: choices — populated and shuffled by scripts.js -->
       <div class="choices-panel" id="choices-panel-1" role="region" aria-label="Response options">
-        <h2 style="font-family:'Merriweather',serif; font-size:1.1rem; margin-bottom:4px; color:var(--white);">
-          How do you respond?
-        </h2>
-        <p class="choices-hint">Select the response you feel is most appropriate. You'll receive immediate feedback on your choice.</p>
-
-        <button class="choice-card"
-          onclick="makeChoice(this,'best','✅ Best Response','By acknowledging Simon\'s exhaustion first, you build trust and open the door to a deeper conversation — making it far more likely that Simon will disclose the real pressures the family are under. This is person-centred care in action.')"
-          aria-label="Option A: Acknowledge Simon's exhaustion">
-          <div class="choice-marker" aria-hidden="true">A</div>
-          <div class="choice-card-text">"Simon, you look exhausted. Let's sit for a moment and talk about how you are managing."</div>
-        </button>
-
-        <button class="choice-card"
-          onclick="makeChoice(this,'neutral','⚠️ Acceptable — but incomplete','Attending to Helen\'s immediate health need is reasonable, but it misses the opportunity to acknowledge Simon\'s visible distress. A holistic approach means attending to the whole family — not just the clinical task.')"
-          aria-label="Option B: Check Helen's oxygen levels first">
-          <div class="choice-marker" aria-hidden="true">B</div>
-          <div class="choice-card-text">"Helen, your breathing looks heavy. Let's check your oxygen levels first."</div>
-        </button>
-
-        <button class="choice-card"
-          onclick="makeChoice(this,'poor','❌ Missed Opportunity','Rushing through the visit sends a clear message that their lives are simply a task to complete. This damages trust and makes it far less likely that the family will open up about the real pressures they are facing — including Simon\'s financial crisis and Sophie\'s withdrawal.')"
-          aria-label="Option C: Get through the vitals quickly">
-          <div class="choice-marker" aria-hidden="true">C</div>
-          <div class="choice-card-text">"I have a lot of patients today, so let's just get through the vitals quickly."</div>
-        </button>
-
-        <div class="scenario-feedback" id="scenario-feedback" role="alert" aria-live="polite"></div>
-
-        <button class="btn-next" id="btn-watch-next" hidden
-                onclick="openVideoModal()" aria-label="Watch what happens next">
-          ▶ Watch What Happens Next
-        </button>
-
-        <button class="btn-next" id="btn-retry" hidden
-                onclick="retryQuestion()" aria-label="Try again"
-                style="background:transparent; border:2px solid rgba(255,255,255,0.25); color:var(--white);">
-          ↺ Try Again
-        </button>
-
-        <div style="margin-top:16px;">
-          <button class="btn btn-secondary" onclick="goToPage(2)"
-                  style="font-size:0.82rem; padding:10px 18px;" aria-label="Back to Helen's profile">
-            <span aria-hidden="true">←</span> Back to Profile
-          </button>
-        </div>
-
+        <!-- renderChoicesPanel() in scripts.js fills this on DOMContentLoaded -->
       </div><!-- /choices-panel -->
 
     </div>
@@ -357,15 +328,12 @@
           <p>
             You are now in Helen's home. Before you begin your assessment, take a moment to explore the
             room. Click each hotspot to identify what you notice — you must find all
-            <strong style="color:var(--white);">6 points of interest</strong> before you can continue.
+            <strong style="color:var(--white);">3 points of interest</strong> before you can continue.
           </p>
         </div>
         <div class="hotspot-progress-pills" id="hs-pills" aria-live="polite" aria-label="Hotspot discovery progress">
-          <div class="hotspot-pill" id="pill-1"><div class="pill-dot"></div>Medication</div>
           <div class="hotspot-pill" id="pill-2"><div class="pill-dot"></div>Trip hazard</div>
           <div class="hotspot-pill" id="pill-3"><div class="pill-dot"></div>Television</div>
-          <div class="hotspot-pill" id="pill-4"><div class="pill-dot"></div>Heating</div>
-          <div class="hotspot-pill" id="pill-5"><div class="pill-dot"></div>Hydration</div>
           <div class="hotspot-pill" id="pill-6"><div class="pill-dot"></div>Isolation</div>
         </div>
       </div>
@@ -376,39 +344,21 @@
              alt="Helen's living room with areas of clinical interest highlighted"
              id="hs-image">
 
-        <button class="hs-btn" id="hs-1" style="left:14%; top:80%;"
-                onclick="clickHotspot(1)" aria-label="Hotspot 1 — click to explore">
-          <span class="hs-num">1</span>
-          <div class="hs-tooltip">Click to explore</div>
-        </button>
-
         <button class="hs-btn" id="hs-2" style="left:62%; top:87%;"
-                onclick="clickHotspot(2)" aria-label="Hotspot 2 — click to explore">
-          <span class="hs-num">2</span>
+                onclick="clickHotspot(2)" aria-label="Explore this area">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
           <div class="hs-tooltip">Click to explore</div>
         </button>
 
         <button class="hs-btn" id="hs-3" style="left:83%; top:52%;"
-                onclick="clickHotspot(3)" aria-label="Hotspot 3 — click to explore">
-          <span class="hs-num">3</span>
-          <div class="hs-tooltip">Click to explore</div>
-        </button>
-
-        <button class="hs-btn" id="hs-4" style="left:73%; top:68%;"
-                onclick="clickHotspot(4)" aria-label="Hotspot 4 — click to explore">
-          <span class="hs-num">4</span>
-          <div class="hs-tooltip">Click to explore</div>
-        </button>
-
-        <button class="hs-btn" id="hs-5" style="left:36%; top:75%;"
-                onclick="clickHotspot(5)" aria-label="Hotspot 5 — click to explore">
-          <span class="hs-num">5</span>
+                onclick="clickHotspot(3)" aria-label="Explore this area">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
           <div class="hs-tooltip">Click to explore</div>
         </button>
 
         <button class="hs-btn" id="hs-6" style="left:50%; top:28%;"
-                onclick="clickHotspot(6)" aria-label="Hotspot 6 — click to explore">
-          <span class="hs-num">6</span>
+                onclick="clickHotspot(6)" aria-label="Explore this area">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
           <div class="hs-tooltip">Click to explore</div>
         </button>
       </div>
@@ -417,7 +367,7 @@
       <div class="hs-continue-wrap">
         <div class="hs-locked-msg" id="hs-locked-msg">
           <span aria-hidden="true">🔒</span>
-          <span id="hs-lock-text">Find all 6 hotspots to unlock the next section</span>
+          <span id="hs-lock-text">Find all 3 hotspots to unlock the next section</span>
         </div>
         <button class="btn btn-primary" id="hs-continue-btn" disabled
                 onclick="goToPage(5)"
@@ -443,6 +393,132 @@
 
 
 <!-- ══════════════════════════════════════════════════════
+     PAGE 5 — FOUR PILLARS OF WELLNESS
+══════════════════════════════════════════════════════ -->
+<section class="page" id="page-5" aria-label="Four Pillars of Wellness">
+  <div class="pillars-wrap">
+
+    <p class="pillars-page-eyebrow">Holistic Care Framework</p>
+    <h2 class="pillars-page-title">The Four Pillars of Wellness</h2>
+    <p class="pillars-page-sub">Each pillar supports the whole structure. Remove one, and everything becomes unstable. Click any pillar to explore its definition.</p>
+
+    <div class="building" role="region" aria-label="Four Pillars of Wellness diagram">
+
+      <div class="roof-assembly" aria-hidden="true">
+        <div class="pediment"></div>
+        <div class="entablature">
+          <div class="entablature-title">Holistic Wellbeing</div>
+          <div class="entablature-sub">Person-Centred Care</div>
+        </div>
+      </div>
+
+      <div class="pillars-row" role="list">
+
+        <div class="pillar-col" role="listitem" tabindex="0" id="pc-1"
+             onclick="openPillarModal(1)" onkeydown="if(event.key==='Enter'||event.key===' ')openPillarModal(1)"
+             aria-label="Physical — click to explore">
+          <div class="p-capital p-capital-1"></div>
+          <div class="p-shaft p-shaft-1">
+            <div class="p-icon">🫁</div>
+            <div class="p-label">Physical</div>
+          </div>
+          <div class="p-base p-base-1"></div>
+        </div>
+
+        <div class="pillar-col" role="listitem" tabindex="0" id="pc-2"
+             onclick="openPillarModal(2)" onkeydown="if(event.key==='Enter'||event.key===' ')openPillarModal(2)"
+             aria-label="Psychological and Spiritual — click to explore">
+          <div class="p-capital p-capital-2"></div>
+          <div class="p-shaft p-shaft-2">
+            <div class="p-icon">🕊️</div>
+            <div class="p-label">Psychological<br>&amp; Spiritual</div>
+          </div>
+          <div class="p-base p-base-2"></div>
+        </div>
+
+        <div class="pillar-col" role="listitem" tabindex="0" id="pc-3"
+             onclick="openPillarModal(3)" onkeydown="if(event.key==='Enter'||event.key===' ')openPillarModal(3)"
+             aria-label="Financial — click to explore">
+          <div class="p-capital p-capital-3"></div>
+          <div class="p-shaft p-shaft-3">
+            <div class="p-icon">💷</div>
+            <div class="p-label">Financial</div>
+          </div>
+          <div class="p-base p-base-3"></div>
+        </div>
+
+        <div class="pillar-col" role="listitem" tabindex="0" id="pc-4"
+             onclick="openPillarModal(4)" onkeydown="if(event.key==='Enter'||event.key===' ')openPillarModal(4)"
+             aria-label="Social, Family and Carers — click to explore">
+          <div class="p-capital p-capital-4"></div>
+          <div class="p-shaft p-shaft-4">
+            <div class="p-icon">👨‍👩‍👧</div>
+            <div class="p-label">Social, Family<br>&amp; Carers</div>
+          </div>
+          <div class="p-base p-base-4"></div>
+        </div>
+
+      </div>
+
+      <div class="stylobate" aria-hidden="true">
+        <div class="stylobate-text">Foundation of Person-Centred Care</div>
+      </div>
+
+    </div>
+
+    <p class="pillar-hint" id="pillar-hint" aria-hidden="true">↑ Click any pillar to explore</p>
+
+    <div style="display:flex; justify-content:flex-start; width:100%; max-width:860px; margin-top:32px;">
+      <button class="btn btn-secondary" onclick="goToPage(4)"
+              style="font-size:0.82rem; padding:10px 18px;"
+              aria-label="Back to Helen's Living Room">
+        <span aria-hidden="true">←</span> Back to Helen's Living Room
+      </button>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════════════════════
+     MODAL — PILLAR DETAIL
+══════════════════════════════════════════════════════ -->
+<div id="pillar-modal" class="modal-backdrop" role="dialog" aria-modal="true" aria-labelledby="pm-name">
+
+  <div class="modal-inner">
+    <div class="pillar-modal-stripe" id="pm-stripe"></div>
+
+    <div class="modal-header" style="background:#0f1c34; border-bottom:1px solid rgba(255,255,255,0.07);">
+      <div style="display:flex; align-items:center; gap:14px;">
+        <div class="pillar-modal-icon" id="pm-icon"></div>
+        <div>
+          <div class="pillar-modal-tag" id="pm-tag"></div>
+          <div class="pillar-modal-name" id="pm-name"></div>
+        </div>
+      </div>
+      <button class="modal-close" onclick="closePillarModal()" aria-label="Close">✕</button>
+    </div>
+
+    <div class="modal-body">
+      <div class="pillar-section-label">Definition</div>
+      <div class="pillar-definition" id="pm-definition"></div>
+      <div class="pillar-rule"></div>
+      <div class="pillar-section-label">Key Areas of Focus</div>
+      <div class="pillar-key-grid" id="pm-key-grid"></div>
+    </div>
+
+    <div class="modal-footer">
+      <p>Explore the remaining pillars, then continue.</p>
+      <button class="btn btn-primary" onclick="closePillarModal()" aria-label="Close and continue exploring">
+        Close
+      </button>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════════
      MODAL 1 — VIDEO (unlocked by correct branching answer)
 ══════════════════════════════════════════════════════ -->
 <div id="video-modal" class="modal-backdrop" role="dialog" aria-modal="true"
@@ -462,7 +538,7 @@
       <video id="modal-video" controls width="100%" height="100%"
              style="display:block; width:100%; height:100%; object-fit:cover;"
              aria-label="Scene 2 — Simon opens up about the family's situation">
-        <source src="video/scene2_video.mp4" type="video/mp4">
+        <source src="video/simon_helen_video.mp4" type="video/mp4">
         <!-- <track kind="captions" src="video/scene2_video.vtt" srclang="en" label="English" default> -->
         Your browser does not support the video element.
       </video>
@@ -518,15 +594,19 @@
      FOOTER
 ══════════════════════════════════════════════════════ -->
 <footer role="contentinfo">
-  <div class="footer-copy">© 2024 St Barnabas Hospice · All rights reserved</div>
+  <div class="footer-copy">© 2026 St Barnabas Hospice · All rights reserved</div>
   <div class="footer-wcag">
-    <span class="wcag-badge">WCAG 2.2</span>
-    <span class="wcag-badge">AA Compliant</span>
-    <span>Accessible e-learning</span>
+    <svg class="wcag-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 55 55" aria-label="W3C WCAG accessibility logo" role="img">
+      <rect width="55" height="55" rx="6" fill="#003366"/>
+      <text x="6" y="22" font-family="Arial,sans-serif" font-size="12" font-weight="bold" fill="white">W3C</text>
+      <text x="6" y="38" font-family="Arial,sans-serif" font-size="9" font-weight="bold" fill="#6af">WCAG</text>
+      <text x="6" y="50" font-family="Arial,sans-serif" font-size="8" fill="#adf">2.2 AA</text>
+    </svg>
+    <span class="footer-wcag-text">Accessible e-learning</span>
   </div>
 </footer>
 
 
-<script src="js/scripts.js"></script>
+<script src="scripts.js"></script>
 </body>
 </html>
