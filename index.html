@@ -1,1056 +1,1401 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Understanding Helen | St Barnabas Hospice</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/styles.css">
-</head>
-<body>
-
-<!-- Skip to content (WCAG 2.4.1) -->
-<a href="#main-content" class="skip-link">Skip to main content</a>
-
-
-<!-- ══════════════════════════════════════════════════════
-     HEADER
-══════════════════════════════════════════════════════ -->
-<header role="banner">
-  <a href="index.html" class="brand" aria-label="St Barnabas Hospice — return to home">
-    <div class="brand-logo">
-      <img src="images/logo.jpg" alt="St Barnabas Hospice"
-           style="width:100%; height:100%; object-fit:contain; display:block;">
-    </div>
-    <div class="brand-text">
-      <span class="brand-name">St Barnabas Hospice</span>
-      <span class="brand-tagline">E-Learning Platform</span>
-    </div>
-  </a>
-  <div class="module-label">
-    <strong>Understanding Helen</strong>
-    Person-Centred Care · Module 1
-  </div>
-</header>
-
-
-<!-- ══════════════════════════════════════════════════════
-     PROGRESS NAV
-══════════════════════════════════════════════════════ -->
-<nav aria-label="Module progress" class="progress-nav">
-  <button class="nav-step current" id="nav-1" aria-current="step"
-          onclick="navClick(1)" aria-label="Step 1: Meet Helen">
-    <div class="nav-step-num" aria-hidden="true">1</div>
-    <span class="nav-step-label">Meet Helen</span>
-  </button>
-
-  <div class="nav-divider" aria-hidden="true"></div>
-
-  <button class="nav-step" id="nav-2" onclick="navClick(2)"
-          aria-label="Step 2: Her Profile" disabled>
-    <div class="nav-step-num" aria-hidden="true">2</div>
-    <span class="nav-step-label">Her Profile</span>
-  </button>
-
-  <div class="nav-divider" aria-hidden="true"></div>
-
-  <button class="nav-step" id="nav-3" onclick="navClick(3)"
-          aria-label="Step 3: The First Visit" disabled>
-    <div class="nav-step-num" aria-hidden="true">3</div>
-    <span class="nav-step-label">The First Visit</span>
-  </button>
-
-  <div class="nav-divider" aria-hidden="true"></div>
-
-  <button class="nav-step" id="nav-4" onclick="navClick(4)"
-          aria-label="Step 4: Helen's Living Room" disabled>
-    <div class="nav-step-num" aria-hidden="true">4</div>
-    <span class="nav-step-label">Helen's Living Room</span>
-  </button>
-
-  <div class="nav-divider" aria-hidden="true"></div>
-
-  <button class="nav-step" id="nav-5" onclick="navClick(5)"
-          aria-label="Step 5: Four Pillars of Wellness" disabled>
-    <div class="nav-step-num" aria-hidden="true">5</div>
-    <span class="nav-step-label">Four Pillars</span>
-  </button>
-
-  <div class="nav-divider" aria-hidden="true"></div>
-
-  <button class="nav-step" id="nav-6" onclick="navClick(6)"
-          aria-label="Step 6: Sophie and Claire" disabled>
-    <div class="nav-step-num" aria-hidden="true">6</div>
-    <span class="nav-step-label">Sophie &amp; Claire</span>
-  </button>
-
-  <div class="nav-divider" aria-hidden="true"></div>
-
-  <button class="nav-step" id="nav-7" onclick="navClick(7)"
-          aria-label="Step 7: Advance Care Plan" disabled>
-    <div class="nav-step-num" aria-hidden="true">7</div>
-    <span class="nav-step-label">Care Plan</span>
-  </button>
-</nav>
-
-<!-- Progress bar -->
-<div class="module-progress-bar" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" aria-label="Module completion progress">
-  <div class="progress-track">
-    <div class="progress-fill" id="progress-fill"></div>
-  </div>
-  <div class="progress-label" id="progress-label" aria-live="polite">0% complete</div>
-</div>
-
-
-<!-- ══════════════════════════════════════════════════════
-     MAIN CONTENT
-══════════════════════════════════════════════════════ -->
-<main id="main-content">
-
-
-  <!-- ────────────────────────────────────────────────────
-       PAGE 1 — VIDEO INTRODUCTION
-  ──────────────────────────────────────────────────── -->
-  <section class="page active" id="page-1" aria-label="Introduction — Meet Helen">
-    <div class="intro-hero">
-
-      <div class="intro-text">
-        <div class="intro-eyebrow" role="note">Module Introduction</div>
-        <h1 class="intro-heading">Meet <em>Helen.</em><br>Her story matters.</h1>
-        <p class="intro-desc">
-          Helen is 75 years old and is receiving palliative care at home. She has a family who love her
-          deeply — and a family who are struggling. Before your first visit, take a moment to hear from
-          Helen herself.
-        </p>
-        <div class="intro-instruction" role="note">
-          <div class="intro-instruction-icon" aria-hidden="true">▶</div>
-          <p>
-            <strong>Watch Helen's introduction video below.</strong> She will tell you in her own words
-            what matters most to her. Listen carefully — her priorities will shape the choices you make
-            throughout this module.
-          </p>
-        </div>
-        <div class="continue-row">
-          <button class="btn btn-primary" onclick="goToPage(2)"
-                  aria-label="Continue to Helen's Profile">
-            Continue to Her Profile <span aria-hidden="true">→</span>
-          </button>
-          <span style="font-size:0.78rem; color:var(--text-muted);">After watching the video</span>
-        </div>
-      </div>
-
-      <!-- Video -->
-      <div>
-        <div class="video-container" role="region" aria-label="Helen's introduction video">
-          <video controls width="100%" height="100%"
-                 poster="images/thumbnail.png"
-                 style="display:block; width:100%; height:100%; object-fit:cover;"
-                 aria-label="Helen introduces herself and shares what matters most to her">
-            <source src="video/intro_video.mp4" type="video/mp4">
-            <!-- Add captions for WCAG 1.2.2:
-            <track kind="captions" src="video/intro_video.vtt" srclang="en" label="English" default> -->
-            Your browser does not support the video element.
-          </video>
-        </div>
-        <p style="font-size:0.72rem; color:rgba(255,255,255,0.35); margin-top:10px; text-align:center; letter-spacing:0.04em;">
-          Add a .vtt captions file to meet WCAG 1.2.2
-        </p>
-      </div>
-
-    </div>
-  </section>
-
-
-  <!-- ────────────────────────────────────────────────────
-       PAGE 2 — CLIPBOARD PROFILE
-  ──────────────────────────────────────────────────── -->
-  <section class="page" id="page-2" aria-label="Helen's clinical profile">
-    <div class="clipboard-wrap">
-
-      <div class="clipboard-title-area">
-        <div class="clipboard-eyebrow">Before Your Visit</div>
-        <h2>Helen's Clinical Profile</h2>
-        <p>Review the information below before making your first home visit.</p>
-      </div>
-
-      <div class="clipboard" role="document" aria-label="Patient information clipboard">
-
-        <div class="clipboard-header">
-          <div class="clipboard-header-brand">
-            <div class="header-logo-sm" aria-hidden="true">SB</div>
-            <span>St Barnabas Hospice — Patient Record</span>
-          </div>
-          <div class="clipboard-ref" aria-label="Reference number">REF: SBH-2024-0047</div>
-        </div>
-
-        <div class="clipboard-body">
-
-          <div class="patient-header">
-            <div class="patient-photo" aria-label="Photograph of Helen Marsh">
-              <img src="images/thumbnail.png" alt="Helen Marsh, patient">
-            </div>
-            <div class="patient-meta">
-              <div class="patient-name">Helen Marsh</div>
-              <div class="patient-dob">Date of Birth: 14 March 1951 &nbsp;·&nbsp; Age: 75 &nbsp;·&nbsp; Female</div>
-              <div class="patient-badges" role="list" aria-label="Patient status indicators">
-                <span class="badge badge-warn"  role="listitem">Palliative Care</span>
-                <span class="badge badge-navy"  role="listitem">DNR in Place</span>
-                <span class="badge badge-blue"  role="listitem">Hospice at Home</span>
-                <span class="badge badge-green" role="listitem">Faith: Christian</span>
-              </div>
-            </div>
-          </div>
-
-          <div class="clipboard-alert" role="alert">
-            <div class="alert-icon" aria-hidden="true">⚠️</div>
-            <p>
-              <strong>Clinical Alert:</strong> Helen has Stage 4 ovarian cancer with recent pulmonary
-              metastases. She experiences episodes of breathlessness requiring oxygen therapy. Her
-              prognosis is weeks to months. Family members are aware but their granddaughter Sophie (14) has
-              not been formally told.
-            </p>
-          </div>
-
-          <div class="info-grid">
-
-            <div class="info-section">
-              <div class="info-section-title">Clinical Summary</div>
-              <div class="info-row">
-                <span class="info-label">Primary diagnosis</span>
-                <span class="info-value">Ovarian cancer (Stage 4)</span>
-              </div>
-              <div class="info-row">
-                <span class="info-label">Secondary</span>
-                <span class="info-value">Pulmonary metastases</span>
-              </div>
-              <div class="info-row">
-                <span class="info-label">Oxygen therapy</span>
-                <span class="info-value alert">2L/min — in place</span>
-              </div>
-              <div class="info-row">
-                <span class="info-label">Medication review</span>
-                <span class="info-value">Due this visit</span>
-              </div>
-            </div>
-
-            <div class="info-section">
-              <div class="info-section-title">Household</div>
-              <div class="info-row">
-                <span class="info-label">Primary carer</span>
-                <span class="info-value">Simon Marsh (husband, 68)</span>
-              </div>
-              <div class="info-row">
-                <span class="info-label">Also at home</span>
-                <span class="info-value">Sophie Marsh (14)</span>
-              </div>
-              <div class="info-row">
-                <span class="info-label">Simon's work</span>
-                <span class="info-value alert">Works night shifts</span>
-              </div>
-              <div class="info-row">
-                <span class="info-label">Financial concerns</span>
-                <span class="info-value alert">Noted — heating bills</span>
-              </div>
-            </div>
-
-            <div class="info-section">
-              <div class="info-section-title">What Matters to Helen</div>
-              <p class="info-paragraph">
-                Helen has clearly expressed that her <strong>faith is central</strong> to her coping —
-                she prays regularly and finds it her main source of peace. She does not want to be seen
-                as a burden. She values her <strong>dignity and privacy</strong> and has asked that any
-                clinical discussions be carried out sensitively in her presence only.
-              </p>
-            </div>
-
-            <div class="info-section">
-              <div class="info-section-title">Family Context</div>
-              <p class="info-paragraph">
-                Simon is showing signs of <strong>carer strain</strong> — working overtime to cover
-                bills while managing Helen's care. Sophie is <strong>exhibiting withdrawal
-                behaviours</strong> and has not spoken about her grandmother's illness. Consider referral to youth bereavement services.
-              </p>
-            </div>
-
-          </div>
-        </div>
-
-        <div class="clipboard-footer">
-          <p>Printed: <strong>Confidential — Clinical Use Only</strong></p>
-          <p>St Barnabas Hospice &nbsp;·&nbsp; <strong>Not for distribution</strong></p>
-        </div>
-
-      </div><!-- /clipboard -->
-
-      <div style="display:flex; justify-content:space-between; align-items:center; margin-top:36px; flex-wrap:wrap; gap:16px;">
-        <button class="btn btn-secondary" onclick="goToPage(1)" aria-label="Back to introduction">
-          <span aria-hidden="true">←</span> Back
-        </button>
-        <button class="btn btn-primary" onclick="goToPage(3)" aria-label="Begin the first visit scenario">
-          Begin the First Visit <span aria-hidden="true">→</span>
-        </button>
-      </div>
-
-    </div>
-  </section>
-
-
-  <!-- ────────────────────────────────────────────────────
-       PAGE 3 — BRANCHING SCENARIO
-  ──────────────────────────────────────────────────── -->
-  <section class="page" id="page-3" aria-label="Branching scenario — the first visit">
-    <div class="scenario-wrap">
-
-      <!-- Left: scene image + context -->
-      <div class="scenario-left">
-        <div class="scenario-video" role="img" aria-label="Scene 1 — arriving at the family home">
-          <img src="images/simon_helen.png"
-               alt="Simon and Helen at home — Simon looking exhausted, Helen in her armchair breathing heavily, Sophie's bedroom door shut"
-               style="width:100%; height:100%; object-fit:cover; display:block; border-radius:14px;">
-        </div>
-        <div class="scenario-context">
-          <div class="scenario-context-label" aria-hidden="true">📍 Setting the Scene</div>
-          <p>
-            You arrive at the family home for a routine visit. Simon is in the kitchen surrounded by
-            unopened bills. Helen is in her armchair, breathing heavily. Sophie's bedroom door is shut.
-            <br><br>
-            Simon looks up, exhausted. <em>"Sorry about the mess. I've just come in from a shift and
-            haven't checked on everyone yet."</em>
-          </p>
-        </div>
-      </div>
-
-      <!-- Right: choices — populated and shuffled by scripts.js -->
-      <div class="choices-panel" id="choices-panel-1" role="region" aria-label="Response options">
-        <!-- renderChoicesPanel() in scripts.js fills this on DOMContentLoaded -->
-      </div><!-- /choices-panel -->
-
-    </div>
-  </section>
-
-
-  <!-- ────────────────────────────────────────────────────
-       PAGE 4 — HOTSPOT ACTIVITY
-  ──────────────────────────────────────────────────── -->
-  <section class="page" id="page-4" aria-label="Hotspot activity — Helen's living room">
-    <div class="hotspot-wrap">
-
-      <div class="hotspot-header">
-        <div class="hotspot-header-text">
-          <div class="intro-eyebrow" style="margin-bottom:12px;">Environment Assessment</div>
-          <h2>Helen's Living Room</h2>
-          <p>
-            You are now in Helen's home. Before you begin your assessment, take a moment to explore the
-            room. Click each hotspot to identify what you notice — you must find all
-            <strong style="color:var(--white);">4 points of interest</strong> before you can continue.
-          </p>
-        </div>
-        <div class="hotspot-progress-pills" id="hs-pills" aria-live="polite" aria-label="Hotspot discovery progress">
-          <div class="hotspot-pill" id="pill-1"><div class="pill-dot"></div>Medication</div>
-          <div class="hotspot-pill" id="pill-2"><div class="pill-dot"></div>Trip hazard</div>
-          <div class="hotspot-pill" id="pill-3"><div class="pill-dot"></div>Television</div>
-          <div class="hotspot-pill" id="pill-6"><div class="pill-dot"></div>Isolation</div>
-        </div>
-      </div>
-
-      <!-- Scene image with hotspot buttons -->
-      <div class="hotspot-scene" role="img" aria-label="Helen's living room — click the numbered hotspots to explore">
-        <img src="images/helen_hotspot.png"
-             alt="Helen's living room with areas of clinical interest highlighted"
-             id="hs-image">
-
-        <button class="hs-btn" id="hs-1" style="left:22%; top:72%;"
-                onclick="clickHotspot(1)" aria-label="Explore this area">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
-          <div class="hs-tooltip">Click to explore</div>
-        </button>
-
-        <button class="hs-btn" id="hs-2" style="left:62%; top:87%;"
-                onclick="clickHotspot(2)" aria-label="Explore this area">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
-          <div class="hs-tooltip">Click to explore</div>
-        </button>
-
-        <button class="hs-btn" id="hs-3" style="left:83%; top:52%;"
-                onclick="clickHotspot(3)" aria-label="Explore this area">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
-          <div class="hs-tooltip">Click to explore</div>
-        </button>
-
-        <button class="hs-btn" id="hs-6" style="left:50%; top:28%;"
-                onclick="clickHotspot(6)" aria-label="Explore this area">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
-          <div class="hs-tooltip">Click to explore</div>
-        </button>
-      </div>
-
-      <!-- Continue row — locked until all found -->
-      <div class="hs-continue-wrap">
-        <div class="hs-locked-msg" id="hs-locked-msg">
-          <span aria-hidden="true">🔒</span>
-          <span id="hs-lock-text">Find all 4 hotspots to unlock the next section</span>
-        </div>
-        <button class="btn btn-primary" id="hs-continue-btn" disabled
-                onclick="goToPage(5)"
-                aria-label="Continue — locked until all hotspots found"
-                style="opacity:0.4; cursor:not-allowed;">
-          Continue →
-        </button>
-      </div>
-
-      <div style="margin-top:16px;">
-        <button class="btn btn-secondary" onclick="goToPage(3)"
-                style="font-size:0.82rem; padding:10px 18px;"
-                aria-label="Back to the first visit">
-          <span aria-hidden="true">←</span> Back to The First Visit
-        </button>
-      </div>
-
-    </div>
-  </section>
-
-
-</main><!-- /main -->
-
-
-<!-- ══════════════════════════════════════════════════════
-     PAGE 5 — FOUR PILLARS OF WELLNESS
-══════════════════════════════════════════════════════ -->
-<section class="page" id="page-5" aria-label="Four Pillars of Wellness">
-  <div class="pillars-wrap">
-
-    <p class="pillars-page-eyebrow">Holistic Care Framework</p>
-    <h2 class="pillars-page-title">The Four Pillars of Wellness</h2>
-    <p class="pillars-page-sub">Each pillar supports the whole structure. Remove one, and everything becomes unstable. Click any pillar to explore its definition.</p>
-
-    <div class="building" role="region" aria-label="Four Pillars of Wellness diagram">
-
-      <div class="roof-assembly" aria-hidden="true">
-        <div class="pediment"></div>
-        <div class="entablature">
-          <div class="entablature-title">Holistic Wellbeing</div>
-          <div class="entablature-sub">Person-Centred Care</div>
-        </div>
-      </div>
-
-      <div class="pillars-row" role="list">
-
-        <div class="pillar-col" role="listitem" tabindex="0" id="pc-1"
-             onclick="openPillarModal(1)" onkeydown="if(event.key==='Enter'||event.key===' ')openPillarModal(1)"
-             aria-label="Physical — click to explore">
-          <div class="p-capital p-capital-1"></div>
-          <div class="p-shaft p-shaft-1">
-            <div class="p-icon">🫁</div>
-            <div class="p-label">Physical</div>
-          </div>
-          <div class="p-base p-base-1"></div>
-        </div>
-
-        <div class="pillar-col" role="listitem" tabindex="0" id="pc-2"
-             onclick="openPillarModal(2)" onkeydown="if(event.key==='Enter'||event.key===' ')openPillarModal(2)"
-             aria-label="Psychological and Spiritual — click to explore">
-          <div class="p-capital p-capital-2"></div>
-          <div class="p-shaft p-shaft-2">
-            <div class="p-icon">🕊️</div>
-            <div class="p-label">Psychological<br>&amp; Spiritual</div>
-          </div>
-          <div class="p-base p-base-2"></div>
-        </div>
-
-        <div class="pillar-col" role="listitem" tabindex="0" id="pc-3"
-             onclick="openPillarModal(3)" onkeydown="if(event.key==='Enter'||event.key===' ')openPillarModal(3)"
-             aria-label="Financial — click to explore">
-          <div class="p-capital p-capital-3"></div>
-          <div class="p-shaft p-shaft-3">
-            <div class="p-icon">💷</div>
-            <div class="p-label">Financial</div>
-          </div>
-          <div class="p-base p-base-3"></div>
-        </div>
-
-        <div class="pillar-col" role="listitem" tabindex="0" id="pc-4"
-             onclick="openPillarModal(4)" onkeydown="if(event.key==='Enter'||event.key===' ')openPillarModal(4)"
-             aria-label="Social, Family and Carers — click to explore">
-          <div class="p-capital p-capital-4"></div>
-          <div class="p-shaft p-shaft-4">
-            <div class="p-icon">👨‍👩‍👧</div>
-            <div class="p-label">Social, Family<br>&amp; Carers</div>
-          </div>
-          <div class="p-base p-base-4"></div>
-        </div>
-
-      </div>
-
-      <div class="stylobate" aria-hidden="true">
-        <div class="stylobate-text">Foundation of Person-Centred Care</div>
-      </div>
-
-    </div>
-
-    <p class="pillar-hint" id="pillar-hint" aria-hidden="true">↑ Click any pillar to explore</p>
-
-    <!-- Locked continue — unlocks after all 4 pillars opened -->
-    <div class="hs-continue-wrap" style="margin-top:28px; width:100%; max-width:860px;">
-      <div class="hs-locked-msg" id="pillars-locked-msg">
-        <span aria-hidden="true">🔒</span>
-        <span>Explore all four pillars to unlock the next section</span>
-      </div>
-      <button class="btn btn-primary" id="pillars-continue-btn" disabled
-              onclick="goToPage(6)"
-              aria-label="Continue — locked until all pillars explored"
-              style="opacity:0.4; cursor:not-allowed;">
-        Continue to Care Plan →
-      </button>
-    </div>
-
-    <div style="display:flex; justify-content:flex-start; width:100%; max-width:860px; margin-top:16px;">
-      <button class="btn btn-secondary" onclick="goToPage(4)"
-              style="font-size:0.82rem; padding:10px 18px;"
-              aria-label="Back to Helen's Living Room">
-        <span aria-hidden="true">←</span> Back to Helen's Living Room
-      </button>
-    </div>
-
-  </div>
-</section>
-
-
-<!-- ══════════════════════════════════════════════════════
-     MODAL — PILLAR DETAIL
-══════════════════════════════════════════════════════ -->
-<div id="pillar-modal" class="modal-backdrop" role="dialog" aria-modal="true" aria-labelledby="pm-name">
-
-  <div class="modal-inner modal-wide">
-    <div class="pillar-modal-stripe" id="pm-stripe"></div>
-
-    <div class="modal-header" style="background:#0f1c34; border-bottom:1px solid rgba(255,255,255,0.07);">
-      <div style="display:flex; align-items:center; gap:14px;">
-        <div class="pillar-modal-icon" id="pm-icon"></div>
-        <div>
-          <div class="pillar-modal-tag" id="pm-tag"></div>
-          <div class="pillar-modal-name" id="pm-name"></div>
-        </div>
-      </div>
-      <button class="modal-close" onclick="closePillarModal()" aria-label="Close">✕</button>
-    </div>
-
-    <div class="modal-body">
-      <div class="pillar-section-label">About this Pillar</div>
-      <div class="pillar-definition" id="pm-definition"></div>
-      <div class="pillar-rule"></div>
-      <div class="pillar-section-label">Holistic Assessment Framework</div>
-      <div id="pm-key-grid"></div>
-    </div>
-
-    <div class="modal-footer">
-      <p id="pm-hint">Explore the remaining pillars, then continue.</p>
-      <button class="btn btn-primary" onclick="closePillarModal()" aria-label="Close and continue exploring">
-        Close
-      </button>
-    </div>
-  </div>
-
-</div>
-
-
-<!-- ══════════════════════════════════════════════════════
-     MODAL 1 — VIDEO (unlocked by correct branching answer)
-══════════════════════════════════════════════════════ -->
-<div id="video-modal" class="modal-backdrop" role="dialog" aria-modal="true"
-     aria-label="Scene 2 video — The Conversation Begins">
-
-  <div class="modal-inner wide">
-
-    <div class="modal-header">
-      <div class="modal-header-text">
-        <div class="modal-eyebrow">Scene 2 Unlocked</div>
-        <div class="modal-title">The Conversation Begins</div>
-      </div>
-      <button class="modal-close" onclick="closeVideoModal()" aria-label="Close video">✕</button>
-    </div>
-
-    <div style="position:relative; aspect-ratio:16/9; background:#0d1a33;">
-      <video id="modal-video" controls width="100%" height="100%"
-             style="display:block; width:100%; height:100%; object-fit:cover;"
-             aria-label="Scene 2 — Simon opens up about the family's situation">
-        <source src="video/simon_helen_video.mp4" type="video/mp4">
-        <!-- <track kind="captions" src="video/scene2_video.vtt" srclang="en" label="English" default> -->
-        Your browser does not support the video element.
-      </video>
-    </div>
-
-    <div class="modal-footer">
-      <p>Watch the scene, then continue to Helen's Living Room.</p>
-      <button class="btn btn-primary" onclick="closeVideoModal(); goToPage(4);"
-              aria-label="Continue to Helen's Living Room">
-        Continue to Helen's Living Room →
-      </button>
-    </div>
-
-  </div>
-</div>
-
-
-<!-- ══════════════════════════════════════════════════════
-     MODAL 2 — HOTSPOT DETAIL
-══════════════════════════════════════════════════════ -->
-<div id="hs-modal" class="modal-backdrop" role="dialog" aria-modal="true"
-     aria-label="Hotspot detail">
-
-  <div class="modal-inner">
-
-    <div class="modal-header">
-      <div class="modal-header-text">
-        <div class="modal-eyebrow">Clinical Observation</div>
-        <div class="modal-title">What did you find?</div>
-      </div>
-      <button class="modal-close" onclick="closeHotspotModal()" aria-label="Close and continue exploring">✕</button>
-    </div>
-
-    <div class="modal-body">
-      <span class="hs-modal-tag tag-risk" id="hs-modal-eyebrow">High Risk</span>
-      <div class="hs-modal-title" id="hs-modal-title"></div>
-      <div class="hs-modal-body"  id="hs-modal-body"></div>
-      <div class="hs-modal-action" id="hs-modal-action"></div>
-    </div>
-
-    <div class="modal-footer">
-      <p id="hs-modal-hint">Close this panel and continue exploring the room.</p>
-      <button class="btn btn-primary" onclick="closeHotspotModal()" aria-label="Close and continue exploring">
-        Continue Exploring →
-      </button>
-    </div>
-
-  </div>
-</div>
-
-
-<!-- ══════════════════════════════════════════════════════
-     PAGE 6 — SOPHIE & CLAIRE
-══════════════════════════════════════════════════════ -->
-<section class="page" id="page-6" aria-label="Sophie and Claire — family bereavement context">
-  <div class="sophie-wrap">
-
-    <div class="sophie-layout">
-
-      <!-- Left: scene image -->
-      <div class="sophie-left">
-        <div class="sophie-image-frame" role="img" aria-label="Sophie in her bedroom — a photograph of her mother Claire on the windowsill">
-          <img src="images/sophie.png"
-               alt="Sophie sitting quietly in her bedroom. A photograph of Claire is visible on the windowsill."
-               onerror="this.style.display='none'; this.parentElement.classList.add('sophie-img-fallback')">
-          <div class="sophie-img-placeholder" aria-hidden="true">
-            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.2)" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
-            <span>sophie.png</span>
-          </div>
-        </div>
-
-        <!-- Claire memorial card -->
-        <div class="claire-card" role="note" aria-label="Claire Marsh memorial note">
-          <div class="claire-card-header">
-            <div class="claire-initial" aria-hidden="true">C</div>
-            <div>
-              <div class="claire-name">Claire Marsh</div>
-              <div class="claire-dates">1982 – 2022</div>
-            </div>
-          </div>
-          <p class="claire-note">
-            Beloved daughter of Helen and Simon. Mother to Sophie.
-            Died aged 39 following a diagnosis of ovarian cancer —
-            the same illness now facing her mother.
-          </p>
-        </div>
-      </div>
-
-      <!-- Right: narrative + reflection -->
-      <div class="sophie-right">
-
-        <div class="intro-eyebrow" style="margin-bottom:14px;">Family Context</div>
-        <h2 class="sophie-heading">Sophie's Story</h2>
-
-        <p class="sophie-body">
-          Sophie is 14 years old. Three years ago, she watched her mother Claire die of ovarian cancer.
-          She was 11. She never really spoke about it — and nobody pushed her to.
-        </p>
-        <p class="sophie-body">
-          Now her grandmother Helen is facing the same illness. The same breathlessness. The same
-          oxygen tank in the corner. Sophie recognises all of it — and it terrifies her.
-        </p>
-        <p class="sophie-body">
-          Her bedroom door stays shut. She has stopped eating with the family. Her teachers have
-          noticed she is withdrawing at school. Simon is too exhausted to know how to reach her,
-          and Helen is too worried about being a burden to ask.
-        </p>
-
-        <div class="sophie-quote" role="blockquote">
-          <div class="sophie-quote-mark" aria-hidden="true">"</div>
-          <p>She won't talk to me. I don't know if she's grieving Claire all over again,
-          or if she's already grieving me. Maybe both.</p>
-          <div class="sophie-quote-attr">— Helen, speaking to her community nurse</div>
-        </div>
-
-        <!-- Reflection prompts -->
-        <div class="sophie-reflection" role="region" aria-label="Reflective prompts">
-          <div class="sophie-reflection-title">
-            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
-            Consider as you plan Helen's care
-          </div>
-          <ul class="sophie-prompts">
-            <li>Sophie is experiencing <strong>anticipatory grief</strong> — grief for a loss that hasn't happened yet, layered on top of unresolved grief for Claire.</li>
-            <li>Under the <strong>Family &amp; Carer pillar</strong>, Sophie is a child in the home who requires specific support — a referral to youth bereavement services should be recorded in the care plan.</li>
-            <li>Helen's care preferences must account for <strong>Sophie's presence</strong> — where she dies, and how, will form part of Sophie's memory of her.</li>
-            <li>The <strong>Psychological &amp; Spiritual pillar</strong> applies to the whole family — not just Helen.</li>
-          </ul>
-        </div>
-
-        <div style="display:flex; gap:16px; flex-wrap:wrap; margin-top:32px;">
-          <button class="btn btn-secondary" onclick="goToPage(5)"
-                  style="font-size:0.82rem; padding:10px 18px;"
-                  aria-label="Back to Four Pillars">
-            <span aria-hidden="true">←</span> Back to Four Pillars
-          </button>
-          <button class="btn btn-primary" onclick="goToPage(7)"
-                  aria-label="Continue to Advance Care Plan">
-            Continue to Care Plan <span aria-hidden="true">→</span>
-          </button>
-        </div>
-
-      </div>
-    </div>
-
-  </div>
-</section>
-
-
-<!-- ══════════════════════════════════════════════════════
-     PAGE 7 — ADVANCE CARE PLAN ACTIVITY
-══════════════════════════════════════════════════════ -->
-<section class="page" id="page-7" aria-label="Advance Care Plan activity">
-
-  <!-- Floating notes button — follows scroll -->
-  <button class="acp-float-btn" onclick="openAcpModal()" aria-label="View Helen's notes">
-    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
-    Helen's Notes
-  </button>
-
-  <div class="acp-wrap">
-
-      <p class="pillars-page-eyebrow">Care Planning Activity</p>
-      <h2 class="pillars-page-title">Helen's Advance Care Plan</h2>
-      <p class="pillars-page-sub" style="max-width:680px;">
-        Using everything you have learned about Helen, complete the sections below.
-        Fields highlight <span style="color:#6ee7b7; font-weight:600;">green</span> when correct
-        and <span style="color:#f87171; font-weight:600;">red</span> when a key detail needs attention.
-        Use <strong>Helen's Notes</strong> (floating bottom-right) at any time for reference.
-      </p>
-
-      <div class="acp-form" role="form" aria-label="Advance Care Plan form">
-
-        <!-- SECTION 1: Personal Details -->
-        <div class="acp-section">
-          <div class="acp-section-header">
-            <div class="acp-section-num">1</div>
-            <h3 class="acp-section-title">Personal Details</h3>
-          </div>
-          <div class="acp-fields">
-            <div class="acp-field-row">
-              <div class="acp-field">
-                <label class="acp-label" for="acp-firstname">First name</label>
-                <input class="acp-input acp-validate" id="acp-firstname" type="text"
-                  placeholder="First name"
-                  data-answer="helen" data-match="contains">
-              </div>
-              <div class="acp-field">
-                <label class="acp-label" for="acp-surname">Surname</label>
-                <input class="acp-input acp-validate" id="acp-surname" type="text"
-                  placeholder="Surname"
-                  data-answer="marsh" data-match="contains">
-              </div>
-              <div class="acp-field">
-                <label class="acp-label" for="acp-preferred">Preferred name</label>
-                <input class="acp-input acp-validate" id="acp-preferred" type="text"
-                  placeholder="What she likes to be called"
-                  data-answer="helen" data-match="contains">
-              </div>
-            </div>
-            <div class="acp-field-row">
-              <div class="acp-field">
-                <label class="acp-label" for="acp-dob">Date of birth</label>
-                <input class="acp-input acp-validate" id="acp-dob" type="text"
-                  placeholder="e.g. 14 March 1951"
-                  data-answer="1951" data-match="contains">
-              </div>
-              <div class="acp-field">
-                <label class="acp-label" for="acp-faith">Religion / spiritual faith</label>
-                <input class="acp-input acp-validate" id="acp-faith" type="text"
-                  placeholder="e.g. Christian"
-                  data-answer="christian" data-match="contains">
-              </div>
-              <div class="acp-field">
-                <label class="acp-label" for="acp-partner">Partner / husband / wife</label>
-                <input class="acp-input acp-validate" id="acp-partner" type="text"
-                  placeholder="Name of partner"
-                  data-answer="simon" data-match="contains">
-              </div>
-            </div>
-            <div class="acp-field-row">
-              <div class="acp-field" style="grid-column:span 2">
-                <label class="acp-label" for="acp-liveswith">Lives with</label>
-                <input class="acp-input acp-validate" id="acp-liveswith" type="text"
-                  placeholder="Who does Helen live with?"
-                  data-answer="simon" data-match="contains">
-              </div>
-              <div class="acp-field">
-                <label class="acp-label" for="acp-nhs">NHS number</label>
-                <input class="acp-input" id="acp-nhs" type="text"
-                  placeholder="Leave blank if unknown">
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- SECTION 2: Family Members -->
-        <div class="acp-section">
-          <div class="acp-section-header">
-            <div class="acp-section-num">2</div>
-            <h3 class="acp-section-title">Family Members &amp; Informal Carers</h3>
-          </div>
-          <div class="acp-fields">
-            <div class="acp-table-row acp-table-head">
-              <span>Name</span><span>Relationship</span><span>Role / notes</span><span>Next of Kin?</span>
-            </div>
-            <div class="acp-table-row">
-              <input class="acp-input acp-validate" type="text" placeholder="Name"
-                aria-label="Family member 1 name" data-answer="simon" data-match="contains">
-              <input class="acp-input acp-validate" type="text" placeholder="Relationship"
-                aria-label="Relationship" data-answer="husband" data-match="contains">
-              <input class="acp-input acp-validate" type="text" placeholder="e.g. primary carer"
-                aria-label="Role" data-answer="carer" data-match="contains">
-              <select class="acp-input acp-validate-select" aria-label="Next of kin"
-                data-answer="yes">
-                <option value="">—</option><option value="yes">Yes</option><option value="no">No</option>
-              </select>
-            </div>
-            <div class="acp-table-row">
-              <input class="acp-input acp-validate" type="text" placeholder="Name"
-                aria-label="Family member 2 name" data-answer="sophie" data-match="contains">
-              <input class="acp-input acp-validate" type="text" placeholder="Relationship"
-                aria-label="Relationship" data-answer="granddaughter" data-match="contains">
-              <input class="acp-input" type="text" placeholder="e.g. youth bereavement referral needed"
-                aria-label="Notes">
-              <select class="acp-input" aria-label="Next of kin">
-                <option value="">—</option><option>Yes</option><option>No</option>
-              </select>
-            </div>
-          </div>
-        </div>
-
-        <!-- SECTION 3: Care Preferences -->
-        <div class="acp-section">
-          <div class="acp-section-header">
-            <div class="acp-section-num">3</div>
-            <h3 class="acp-section-title">Future Care Preferences</h3>
-          </div>
-          <div class="acp-fields">
-            <div class="acp-field">
-              <label class="acp-label" for="acp-placecare">Preferred place of care</label>
-              <input class="acp-input acp-validate" id="acp-placecare" type="text"
-                placeholder="e.g. own home, hospice, care home"
-                data-answer="home" data-match="contains">
-            </div>
-            <div class="acp-field">
-              <label class="acp-label" for="acp-placedeath">Preferred place of death (first choice)</label>
-              <input class="acp-input acp-validate" id="acp-placedeath" type="text"
-                placeholder="e.g. own home"
-                data-answer="home" data-match="contains">
-            </div>
-            <div class="acp-field">
-              <label class="acp-label" for="acp-placedeath2">Preferred place of death (if first not possible)</label>
-              <input class="acp-input acp-validate" id="acp-placedeath2" type="text"
-                placeholder="e.g. hospice"
-                data-answer="hospice" data-match="contains">
-            </div>
-            <div class="acp-field">
-              <label class="acp-label" for="acp-notwant">What Helen does NOT want to happen</label>
-              <textarea class="acp-input acp-textarea acp-validate" id="acp-notwant" rows="2"
-                placeholder="e.g. does not want to die in hospital, does not want to feel like a burden"
-                data-answer="hospital" data-match="contains"></textarea>
-            </div>
-            <div class="acp-field">
-              <label class="acp-label" for="acp-familycomments">Family / carer comments</label>
-              <textarea class="acp-input acp-textarea" id="acp-familycomments" rows="2"
-                placeholder="What has been discussed with Simon? What about Sophie?"></textarea>
-            </div>
-          </div>
-        </div>
-
-        <!-- SECTION 4: What Matters -->
-        <div class="acp-section">
-          <div class="acp-section-header">
-            <div class="acp-section-num">4</div>
-            <h3 class="acp-section-title">Who and What is Important to Helen</h3>
-          </div>
-          <div class="acp-fields">
-            <div class="acp-field">
-              <label class="acp-label" for="acp-people">People (and pets) important to Helen</label>
-              <textarea class="acp-input acp-textarea acp-validate" id="acp-people" rows="2"
-                placeholder="Who matters most to her?"
-                data-answer="simon|sophie|family" data-match="contains-any"></textarea>
-            </div>
-            <div class="acp-field">
-              <label class="acp-label" for="acp-places">Places or things important to Helen</label>
-              <textarea class="acp-input acp-textarea acp-validate" id="acp-places" rows="2"
-                placeholder="e.g. her home, faith, particular belongings"
-                data-answer="home|faith|church|prayer" data-match="contains-any"></textarea>
-            </div>
-            <div class="acp-field">
-              <label class="acp-label" for="acp-wayoflife">The way she lives her life that is important to her</label>
-              <textarea class="acp-input acp-textarea acp-validate" id="acp-wayoflife" rows="2"
-                placeholder="e.g. faith, dignity, privacy, daily routines"
-                data-answer="dignity|faith|privacy" data-match="contains-any"></textarea>
-            </div>
-          </div>
-        </div>
-
-        <!-- SECTION 5: Things in Place -->
-        <div class="acp-section">
-          <div class="acp-section-header">
-            <div class="acp-section-num">5</div>
-            <h3 class="acp-section-title">Things Helen Has Put in Place</h3>
-          </div>
-          <div class="acp-checklist">
-            <label class="acp-check-item acp-check-correct">
-              <input type="checkbox" id="chk-dnr"> <span>Do Not Attempt CPR (DNACPR)</span>
-              <span class="acp-check-hint">✓ Confirmed in notes</span>
-            </label>
-            <label class="acp-check-item">
-              <input type="checkbox"> <span>Carer Emergency Plan (CERS)</span>
-            </label>
-            <label class="acp-check-item acp-check-pending">
-              <input type="checkbox" id="chk-lpa"> <span>Lasting Power of Attorney</span>
-              <span class="acp-check-hint">⚠ Not yet in place — discuss</span>
-            </label>
-            <label class="acp-check-item">
-              <input type="checkbox"> <span>Advance Care Plan on file</span>
-            </label>
-            <label class="acp-check-item acp-check-pending">
-              <input type="checkbox" id="chk-respect"> <span>ReSPECT form</span>
-              <span class="acp-check-hint">⚠ Not yet completed</span>
-            </label>
-            <label class="acp-check-item acp-check-correct">
-              <input type="checkbox" id="chk-meds"> <span>Medications documented</span>
-              <span class="acp-check-hint">✓ Attached to care record</span>
-            </label>
-            <label class="acp-check-item">
-              <input type="checkbox"> <span>Will in place</span>
-            </label>
-            <label class="acp-check-item">
-              <input type="checkbox"> <span>Funeral preferences recorded</span>
-            </label>
-          </div>
-        </div>
-
-      </div><!-- /acp-form -->
-
-      <div class="acp-form-footer">
-        <p class="acp-footer-note">Fields highlighted green contain a correct key detail. Red fields need attention before the plan is complete.</p>
-        <div style="display:flex; gap:16px; flex-wrap:wrap; align-items:center;">
-          <button class="btn btn-secondary" onclick="goToPage(6)" aria-label="Back to Sophie and Claire">
-            <span aria-hidden="true">←</span> Back
-          </button>
-          <button class="btn btn-primary" onclick="printAcp()"
-                  style="background:var(--yellow); color:var(--navy);"
-                  aria-label="Print and save care plan">
-            🖨 Print &amp; Save
-          </button>
-        </div>
-      </div>
-
-  </div>
-</section>
-
-
-<!-- ══════════════════════════════════════════════════════
-     MODAL — ACP HELEN'S NOTES
-══════════════════════════════════════════════════════ -->
-<div id="acp-notes-modal" class="modal-backdrop" role="dialog" aria-modal="true" aria-labelledby="acp-notes-title">
-
-  <div class="modal-inner modal-wide">
-    <div style="height:5px; background:linear-gradient(90deg,var(--blue),var(--yellow));"></div>
-
-    <div class="modal-header" style="background:#0f1c34; border-bottom:1px solid rgba(255,255,255,0.07);">
-      <div style="display:flex; align-items:center; gap:14px;">
-        <div style="width:42px; height:42px; border-radius:10px; background:rgba(1,151,222,0.15); display:flex; align-items:center; justify-content:center; font-size:1.2rem;" aria-hidden="true">📋</div>
-        <div>
-          <div style="font-size:0.65rem; font-weight:700; letter-spacing:0.12em; text-transform:uppercase; color:var(--text-muted); margin-bottom:3px;">Reference</div>
-          <div id="acp-notes-title" style="font-family:'Merriweather',serif; font-size:1rem; font-weight:700; color:var(--white);">Helen's Clinical Notes</div>
-        </div>
-      </div>
-      <button class="modal-close" onclick="closeAcpModal()" aria-label="Close Helen's notes">✕</button>
-    </div>
-
-    <div class="modal-body">
-
-      <div class="acp-notes-grid">
-
-        <div class="acp-note-card">
-          <div class="acp-note-label">Personal</div>
-          <p>Full name: <strong>Helen Marsh</strong>. Date of birth: <strong>14 March 1951</strong> (age 75). Lives at home with husband <strong>Simon Marsh (68)</strong> and granddaughter <strong>Sophie Marsh (14)</strong>. Faith: <strong>Christian</strong> — faith is central to her coping.</p>
-        </div>
-
-        <div class="acp-note-card">
-          <div class="acp-note-label">Clinical</div>
-          <p>Stage 4 ovarian cancer with pulmonary metastases. Oxygen therapy 2L/min in place. Prognosis: weeks to months. DNR in place. Medication review due this visit.</p>
-        </div>
-
-        <div class="acp-note-card">
-          <div class="acp-note-label">What Matters to Helen</div>
-          <p>Helen values her <strong>dignity and privacy</strong> deeply. She does not want to be seen as a burden. She wants clinical discussions to take place sensitively, in her presence only. She prays regularly and finds faith her main source of peace.</p>
-        </div>
-
-        <div class="acp-note-card">
-          <div class="acp-note-label">Care Preferences</div>
-          <p>Helen has expressed a <strong>strong wish to remain at home</strong> for as long as possible. She has not formally stated a preferred place of death but has expressed she does not want to die in hospital. She would consider the hospice if home care is no longer manageable.</p>
-        </div>
-
-        <div class="acp-note-card">
-          <div class="acp-note-label">Family Context</div>
-          <p>Simon is primary carer — working night shifts while managing Helen's care, showing signs of <strong>carer strain</strong>. Sophie (14) has not been told the prognosis and is withdrawing — consider referral to youth bereavement services. Financial pressures noted (heating bills).</p>
-        </div>
-
-        <div class="acp-note-card">
-          <div class="acp-note-label">Documents in Place</div>
-          <p>DNR / DNACPR confirmed. No LPA on file yet — to be discussed. No formal ACP documented. Medication list attached to care record. ReSPECT form not yet completed.</p>
-        </div>
-
-      </div>
-
-    </div>
-
-    <div class="modal-footer">
-      <p>Use these notes to guide your completion of the Advance Care Plan.</p>
-      <button class="btn btn-primary" onclick="closeAcpModal()" aria-label="Close notes and return to form">
-        Return to Form →
-      </button>
-    </div>
-  </div>
-
-</div>
-<footer role="contentinfo">
-  <div class="footer-copy">© 2026 St Barnabas Hospice · All rights reserved</div>
-  <div class="footer-wcag">
-    <svg class="wcag-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 55 55" aria-label="W3C WCAG accessibility logo" role="img">
-      <rect width="55" height="55" rx="6" fill="#003366"/>
-      <text x="6" y="22" font-family="Arial,sans-serif" font-size="12" font-weight="bold" fill="white">W3C</text>
-      <text x="6" y="38" font-family="Arial,sans-serif" font-size="9" font-weight="bold" fill="#6af">WCAG</text>
-      <text x="6" y="50" font-family="Arial,sans-serif" font-size="8" fill="#adf">2.2 AA</text>
-    </svg>
-    <span class="footer-wcag-text">Accessible e-learning</span>
-  </div>
-</footer>
-
-<script src="js/scripts.js"></script>
-</body>
-</html>
+/* ══════════════════════════════════════════════════════════
+   ST BARNABAS HOSPICE — Understanding Helen
+   styles.css
+   WCAG 2.2 AA verified colour pairings:
+     white on #22417e  = 7.2:1 AAA ✅
+     white on #182f5c  = 9.1:1 AAA ✅
+     #22417e on #fdca0f = 9.1:1 AAA ✅
+     #22417e on #ffffff = 7.2:1 AAA ✅
+══════════════════════════════════════════════════════════ */
+
+/* ── TOKENS ─────────────────────────────────────────── */
+:root {
+  --navy:        #22417e;
+  --navy-dark:   #182f5c;
+  --navy-light:  #2d5299;
+  --brand-header:#2b529f;
+  --blue:        #0197de;
+  --blue-dark:   #0178b0;
+  --yellow:      #fdca0f;
+  --yellow-dark: #d4a800;
+  --white:       #ffffff;
+  --text-muted:  #c5d3e8;
+  --surface:     rgba(255,255,255,0.06);
+  --border:      rgba(255,255,255,0.12);
+}
+
+/* ── RESET ───────────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'DM Sans', sans-serif;
+  background: var(--navy-dark);
+  color: var(--white);
+  min-height: 100vh;
+  overflow-x: hidden;
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+/* ── SKIP LINK (WCAG 2.4.1) ─────────────────────────── */
+.skip-link {
+  position: absolute;
+  top: -100px;
+  left: 16px;
+  background: var(--yellow);
+  color: var(--navy);
+  padding: 10px 18px;
+  border-radius: 4px;
+  font-weight: 700;
+  font-size: 0.9rem;
+  z-index: 9999;
+  transition: top 0.2s;
+  text-decoration: none;
+}
+.skip-link:focus { top: 16px; outline: 3px solid var(--navy); }
+
+/* ── HEADER ─────────────────────────────────────────── */
+header {
+  background: var(--brand-header);
+  border-bottom: 4px solid var(--yellow);
+  padding: 0 48px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 72px;
+  position: sticky;
+  top: 0;
+  z-index: 200;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.3);
+}
+
+.brand {
+  display: flex; align-items: center; gap: 14px;
+  text-decoration: none; color: inherit;
+}
+.brand:focus-visible { outline: 3px solid var(--yellow); outline-offset: 4px; border-radius: 4px; }
+
+.brand-logo {
+  width: 120px;
+  height: 52px;
+  background: transparent;
+  border-radius: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.brand-text { display: flex; flex-direction: column; line-height: 1.2; }
+.brand-name {
+  font-family: 'Merriweather', serif;
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--white);
+  letter-spacing: 0.01em;
+}
+.brand-tagline {
+  font-size: 0.7rem;
+  color: var(--yellow);
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.module-label {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  text-align: right;
+  line-height: 1.4;
+}
+.module-label strong {
+  display: block;
+  color: var(--white);
+  font-size: 0.85rem;
+  letter-spacing: 0.02em;
+}
+
+/* ── PROGRESS NAV ───────────────────────────────────── */
+.progress-nav {
+  background: var(--navy);
+  border-bottom: 1px solid var(--border);
+  padding: 0 32px;
+  display: flex;
+  align-items: center;
+  min-height: 52px;
+  flex-wrap: nowrap;
+  overflow-x: auto;
+  scrollbar-width: none; /* Firefox */
+}
+.progress-nav::-webkit-scrollbar { display: none; } /* Chrome/Safari */
+
+.nav-step {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 0 14px;
+  height: 52px;
+  cursor: default;
+  border: none;
+  border-bottom: 3px solid transparent;
+  background: transparent;
+  color: inherit;
+  font-family: inherit;
+  text-decoration: none;
+  white-space: nowrap;
+  flex-shrink: 0;
+  transition: border-color 0.3s, background 0.2s;
+}
+.nav-step.done            { border-color: var(--blue); cursor: pointer; }
+.nav-step.done:hover      { background: rgba(1,151,222,0.1); }
+.nav-step.done:focus-visible { outline: 3px solid var(--yellow); outline-offset: -3px; }
+.nav-step.current         { border-color: var(--yellow); cursor: default; }
+.nav-step:disabled        { opacity: 0.4; cursor: not-allowed; pointer-events: none; }
+
+.nav-step-num {
+  width: 24px; height: 24px;
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 0.68rem;
+  font-weight: 700;
+  border: 2px solid rgba(255,255,255,0.2);
+  color: rgba(255,255,255,0.4);
+  transition: all 0.3s;
+  flex-shrink: 0;
+}
+.nav-step.done    .nav-step-num { background: var(--blue);   border-color: var(--blue);   color: var(--white); }
+.nav-step.current .nav-step-num { background: var(--yellow); border-color: var(--yellow); color: var(--navy); }
+
+.nav-step-label {
+  font-size: 0.74rem;
+  font-weight: 500;
+  color: rgba(255,255,255,0.35);
+  transition: color 0.3s;
+}
+.nav-step.done    .nav-step-label { color: var(--text-muted); }
+.nav-step.current .nav-step-label { color: var(--white); font-weight: 600; }
+
+.nav-divider {
+  width: 20px;
+  height: 1px;
+  background: rgba(255,255,255,0.12);
+  flex-shrink: 0;
+}
+
+/* ── PAGE TRANSITIONS ───────────────────────────────── */
+.page {
+  display: none;
+  min-height: calc(100vh - 124px);
+  animation: pageIn 0.45s ease;
+}
+.page.active { display: block; }
+
+@keyframes pageIn {
+  from { opacity: 0; transform: translateY(16px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ── PAGE 1 — VIDEO INTRODUCTION ────────────────────── */
+#page-1 { background: linear-gradient(160deg, var(--navy-dark) 0%, #1a3466 100%); display: none; }
+#page-1.active { display: flex; flex-direction: column; }
+
+.intro-hero {
+  flex: 1;
+  display: grid;
+  grid-template-columns: 1fr 520px;
+  gap: 60px;
+  max-width: 1200px;
+  margin: 0 auto;
+  width: 100%;
+  padding: 56px 48px;
+  align-items: center;
+}
+
+.intro-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(253,202,15,0.12);
+  border: 1px solid rgba(253,202,15,0.3);
+  color: var(--yellow);
+  padding: 6px 14px;
+  border-radius: 20px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin-bottom: 24px;
+}
+.intro-eyebrow::before {
+  content: '';
+  width: 8px; height: 8px;
+  border-radius: 50%;
+  background: var(--yellow);
+  animation: blink 1.5s infinite;
+}
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.3; }
+}
+
+.intro-heading {
+  font-family: 'Merriweather', serif;
+  font-size: 2.6rem;
+  line-height: 1.25;
+  font-weight: 700;
+  margin-bottom: 20px;
+  color: var(--white);
+}
+.intro-heading em { font-style: italic; color: var(--yellow); }
+
+.intro-desc {
+  font-size: 1rem;
+  color: var(--text-muted);
+  line-height: 1.75;
+  margin-bottom: 32px;
+  max-width: 480px;
+}
+
+.intro-instruction {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  background: rgba(1,151,222,0.12);
+  border: 1px solid rgba(1,151,222,0.3);
+  border-left: 4px solid var(--blue);
+  border-radius: 0 10px 10px 0;
+  padding: 16px 20px;
+  margin-bottom: 36px;
+}
+.intro-instruction-icon { font-size: 1.4rem; flex-shrink: 0; }
+.intro-instruction p    { font-size: 0.88rem; color: #c5d3e8; line-height: 1.65; }
+.intro-instruction strong { color: var(--white); }
+
+.video-container {
+  position: relative;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 32px 80px rgba(0,0,0,0.5), 0 0 0 1px rgba(255,255,255,0.08);
+  background: #0d1a33;
+  aspect-ratio: 16/9;
+}
+.video-container iframe,
+.video-container video { width: 100%; height: 100%; border: none; display: block; }
+
+.continue-row { display: flex; align-items: center; gap: 16px; }
+
+/* ── PAGE 2 — CLIPBOARD PROFILE ─────────────────────── */
+#page-2 { background: #f0f4f9; display: none; }
+#page-2.active { display: block; }
+
+.clipboard-wrap { max-width: 900px; margin: 0 auto; padding: 48px 48px 64px; }
+
+.clipboard-title-area { text-align: center; margin-bottom: 36px; }
+.clipboard-eyebrow {
+  display: inline-block;
+  background: var(--navy);
+  color: var(--yellow);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  padding: 6px 16px;
+  border-radius: 20px;
+  margin-bottom: 14px;
+}
+.clipboard-title-area h2 { font-family: 'Merriweather', serif; font-size: 1.8rem; color: var(--navy); margin-bottom: 8px; }
+.clipboard-title-area p  { color: #5a6a82; font-size: 0.92rem; }
+
+.clipboard {
+  background: #fffef5;
+  border-radius: 4px 4px 12px 12px;
+  box-shadow: 0 1px 0 #e8e4d0, 0 2px 0 #ddd9c4, 0 6px 32px rgba(0,0,0,0.18), 0 1px 3px rgba(0,0,0,0.12);
+  position: relative;
+  overflow: visible;
+}
+.clipboard::before {
+  content: '';
+  position: absolute;
+  top: -18px; left: 50%;
+  transform: translateX(-50%);
+  width: 80px; height: 32px;
+  background: #8a8a8a;
+  border-radius: 6px 6px 0 0;
+  z-index: 2;
+  box-shadow: 0 -2px 6px rgba(0,0,0,0.2);
+}
+.clipboard::after {
+  content: '';
+  position: absolute;
+  top: -10px; left: 50%;
+  transform: translateX(-50%);
+  width: 40px; height: 20px;
+  background: #c8c8c8;
+  border-radius: 10px;
+  z-index: 3;
+  border: 3px solid #8a8a8a;
+}
+
+.clipboard-header {
+  background: var(--navy);
+  padding: 24px 36px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 4px solid var(--yellow);
+}
+.clipboard-header-brand { display: flex; align-items: center; gap: 12px; }
+.header-logo-sm {
+  width: 32px; height: 32px;
+  background: var(--yellow);
+  border-radius: 6px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 0.9rem; font-weight: 900; color: var(--navy);
+}
+.clipboard-header-brand span { font-family: 'Merriweather', serif; font-size: 0.85rem; color: var(--white); font-weight: 700; }
+.clipboard-ref { font-size: 0.7rem; color: rgba(255,255,255,0.5); letter-spacing: 0.06em; text-transform: uppercase; }
+
+.clipboard-body { padding: 36px; }
+
+.patient-header {
+  display: flex;
+  gap: 28px;
+  align-items: flex-start;
+  margin-bottom: 32px;
+  padding-bottom: 28px;
+  border-bottom: 2px dashed #d4ceb8;
+}
+.patient-photo {
+  width: 110px; height: 130px;
+  border-radius: 6px;
+  background: #d0d8e8;
+  flex-shrink: 0;
+  overflow: hidden;
+  border: 3px solid #c8c2aa;
+  box-shadow: 2px 2px 8px rgba(0,0,0,0.15);
+  display: flex; align-items: center; justify-content: center;
+}
+.patient-photo img { width: 100%; height: 100%; object-fit: cover; object-position: top; }
+.patient-meta { flex: 1; }
+.patient-name { font-family: 'Merriweather', serif; font-size: 1.7rem; color: var(--navy); font-weight: 700; margin-bottom: 4px; line-height: 1.2; }
+.patient-dob  { font-size: 0.82rem; color: #7a8a9e; margin-bottom: 14px; letter-spacing: 0.02em; }
+.patient-badges { display: flex; flex-wrap: wrap; gap: 8px; }
+.badge { padding: 4px 12px; border-radius: 4px; font-size: 0.72rem; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; border: 1.5px solid; }
+.badge-navy  { background: rgba(34,65,126,0.08); border-color: var(--navy); color: var(--navy); }
+.badge-blue  { background: rgba(1,151,222,0.08);  border-color: var(--blue); color: #0178b0; }
+.badge-warn  { background: rgba(200,80,0,0.08);   border-color: #c85000;     color: #c85000; }
+.badge-green { background: rgba(0,130,80,0.08);   border-color: #008250;     color: #008250; }
+
+.info-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0; margin-bottom: 24px; }
+.info-section { padding: 20px 20px 20px 0; border-bottom: 1px dashed #d4ceb8; }
+.info-section:nth-child(even) { padding-left: 24px; border-left: 1px dashed #d4ceb8; }
+.info-section:last-child,
+.info-section:nth-last-child(2):nth-child(odd) { border-bottom: none; }
+.info-section-title {
+  font-size: 0.68rem; font-weight: 700; letter-spacing: 0.12em;
+  text-transform: uppercase; color: var(--blue); margin-bottom: 10px;
+  display: flex; align-items: center; gap: 6px;
+}
+.info-section-title::after { content: ''; flex: 1; height: 1px; background: rgba(1,151,222,0.2); }
+.info-row { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 6px; gap: 12px; }
+.info-label { font-size: 0.78rem; color: #8a96a8; flex-shrink: 0; }
+.info-value { font-size: 0.84rem; color: var(--navy); font-weight: 500; text-align: right; }
+.info-value.alert { color: #c85000; font-weight: 700; }
+.info-paragraph { font-size: 0.84rem; color: #3d4d62; line-height: 1.7; }
+.info-paragraph strong { color: var(--navy); }
+
+.clipboard-alert {
+  background: rgba(200,80,0,0.07);
+  border: 1.5px solid rgba(200,80,0,0.25);
+  border-left: 4px solid #c85000;
+  border-radius: 0 6px 6px 0;
+  padding: 14px 18px; margin-bottom: 24px;
+  display: flex; gap: 12px; align-items: flex-start;
+}
+.clipboard-alert .alert-icon { font-size: 1.2rem; flex-shrink: 0; }
+.clipboard-alert p     { font-size: 0.82rem; color: #5a3020; line-height: 1.6; }
+.clipboard-alert strong { color: #8a2800; }
+
+.clipboard-footer {
+  background: var(--navy);
+  padding: 14px 36px;
+  display: flex; align-items: center; justify-content: space-between;
+  border-radius: 0 0 12px 12px;
+}
+.clipboard-footer p      { font-size: 0.72rem; color: rgba(255,255,255,0.45); letter-spacing: 0.04em; }
+.clipboard-footer strong { color: rgba(255,255,255,0.7); }
+
+/* ── PAGE 3 — BRANCHING SCENARIO ────────────────────── */
+#page-3 { background: linear-gradient(160deg, var(--navy-dark) 0%, #1a3466 100%); display: none; }
+#page-3.active { display: flex; flex-direction: column; }
+
+.scenario-wrap {
+  max-width: 1200px; margin: 0 auto; width: 100%;
+  padding: 48px;
+  display: grid;
+  grid-template-columns: 1fr 400px;
+  gap: 40px;
+  align-items: start;
+}
+
+.scenario-video {
+  position: relative;
+  border-radius: 14px; overflow: hidden;
+  aspect-ratio: 16/9; background: #0d1a33;
+  box-shadow: 0 24px 60px rgba(0,0,0,0.5), 0 0 0 1px rgba(255,255,255,0.06);
+  margin-bottom: 20px;
+}
+
+.scenario-context {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-left: 4px solid var(--yellow);
+  border-radius: 0 10px 10px 0;
+  padding: 18px 22px;
+}
+.scenario-context-label { font-size: 0.68rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--yellow); margin-bottom: 8px; }
+.scenario-context p    { font-size: 0.9rem; color: #c5d3e8; line-height: 1.7; }
+.scenario-context p em { color: var(--yellow); font-style: italic; }
+
+.choices-panel { display: flex; flex-direction: column; gap: 12px; }
+.choices-hint  { font-size: 0.8rem; color: var(--text-muted); margin-bottom: 10px; line-height: 1.5; }
+
+.choice-card {
+  background: var(--surface);
+  border: 2px solid var(--border);
+  border-radius: 10px;
+  padding: 18px 20px;
+  display: flex; align-items: flex-start; gap: 14px;
+  cursor: pointer;
+  transition: border-color 0.2s, background 0.2s, transform 0.15s;
+  text-align: left; color: var(--white);
+  font-family: 'DM Sans', sans-serif; width: 100%;
+}
+.choice-card:hover          { border-color: rgba(253,202,15,0.45); background: rgba(253,202,15,0.06); transform: translateX(4px); }
+.choice-card:focus-visible  { outline: 3px solid var(--yellow); outline-offset: 2px; }
+
+.choice-marker {
+  width: 32px; height: 32px;
+  border-radius: 50%;
+  border: 2px solid rgba(255,255,255,0.2);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 0.8rem; font-weight: 700; flex-shrink: 0;
+  transition: all 0.2s; color: rgba(255,255,255,0.5);
+}
+.choice-card:hover .choice-marker { border-color: var(--yellow); background: rgba(253,202,15,0.15); color: var(--yellow); }
+.choice-card-text { font-size: 0.9rem; line-height: 1.65; padding-top: 4px; }
+
+.choice-card.best    { border-color: #059669; background: rgba(5,150,105,0.1); }
+.choice-card.neutral { border-color: #d97706; background: rgba(217,119,6,0.1); }
+.choice-card.poor    { border-color: #dc2626; background: rgba(220,38,38,0.1); }
+.choice-card.best    .choice-marker { border-color: #059669; background: rgba(5,150,105,0.2); color: #6ee7b7; }
+.choice-card.neutral .choice-marker { border-color: #d97706; background: rgba(217,119,6,0.2); color: #fde68a; }
+.choice-card.poor    .choice-marker { border-color: #dc2626; background: rgba(220,38,38,0.2); color: #fca5a5; }
+.choice-card:disabled,
+.choice-card[aria-disabled="true"] { cursor: default; transform: none; }
+
+.scenario-feedback {
+  display: none;
+  border-radius: 10px; padding: 18px 20px;
+  font-size: 0.88rem; line-height: 1.7;
+  animation: feedIn 0.3s ease;
+}
+.scenario-feedback.show    { display: block; }
+.scenario-feedback.best    { background: rgba(5,150,105,0.1); border: 1px solid rgba(5,150,105,0.3); border-left: 4px solid #059669; }
+.scenario-feedback.neutral { background: rgba(217,119,6,0.1);  border: 1px solid rgba(217,119,6,0.3);  border-left: 4px solid #d97706; }
+.scenario-feedback.poor    { background: rgba(220,38,38,0.1);  border: 1px solid rgba(220,38,38,0.3);  border-left: 4px solid #dc2626; }
+.feedback-badge { display: inline-block; font-size: 0.68rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 8px; }
+.best    .feedback-badge { color: #6ee7b7; }
+.neutral .feedback-badge { color: #fde68a; }
+.poor    .feedback-badge { color: #fca5a5; }
+.scenario-feedback p { color: #c5d3e8; }
+
+@keyframes feedIn {
+  from { opacity: 0; transform: translateY(6px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ── PAGE 4 — HOTSPOT ACTIVITY ───────────────────────── */
+#page-4 { background: linear-gradient(160deg, var(--navy-dark) 0%, #1a3466 100%); display: none; }
+#page-4.active { display: block; }
+
+.hotspot-wrap { max-width: 1200px; margin: 0 auto; padding: 40px 48px 56px; }
+
+.hotspot-header {
+  display: flex; align-items: flex-start; justify-content: space-between;
+  gap: 24px; margin-bottom: 28px; flex-wrap: wrap;
+}
+.hotspot-header-text h2 { font-family: 'Merriweather', serif; font-size: 1.6rem; color: var(--white); margin-bottom: 6px; }
+.hotspot-header-text p  { font-size: 0.9rem; color: var(--text-muted); line-height: 1.6; max-width: 520px; }
+
+.hotspot-progress-pills { display: flex; gap: 8px; align-items: center; flex-shrink: 0; flex-wrap: wrap; }
+.hotspot-pill {
+  display: flex; align-items: center; gap: 6px;
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 20px; padding: 6px 14px;
+  font-size: 0.75rem; color: var(--text-muted);
+  transition: all 0.4s; white-space: nowrap;
+}
+.hotspot-pill.found { background: rgba(1,151,222,0.15); border-color: var(--blue); color: var(--white); }
+.hotspot-pill .pill-dot { width: 8px; height: 8px; border-radius: 50%; background: rgba(255,255,255,0.2); transition: background 0.4s; flex-shrink: 0; }
+.hotspot-pill.found .pill-dot { background: var(--blue); }
+
+.hotspot-scene {
+  position: relative;
+  border-radius: 14px; overflow: hidden; line-height: 0;
+  box-shadow: 0 24px 64px rgba(0,0,0,0.5), 0 0 0 1px rgba(255,255,255,0.07);
+  margin-bottom: 24px;
+}
+.hotspot-scene img { width: 100%; display: block; border-radius: 14px; filter: brightness(0.88); transition: filter 0.3s; }
+.hotspot-scene:hover img { filter: brightness(0.96); }
+
+.hs-btn {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  width: 44px; height: 44px;
+  border-radius: 50%;
+  border: 3px solid var(--white);
+  background: var(--blue);
+  color: var(--white);
+  cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+  transition: transform 0.2s, background 0.3s, border-color 0.3s;
+  z-index: 10;
+  padding: 0;
+}
+.hs-btn svg { width: 18px; height: 18px; flex-shrink: 0; }
+.hs-btn.visited svg { stroke: var(--navy); }
+.hs-btn:not(.visited)      { animation: hspulsering 2.2s infinite; }
+.hs-btn:hover              { transform: translate(-50%, -50%) scale(1.18); }
+.hs-btn:focus-visible      { outline: 3px solid var(--yellow); outline-offset: 3px; }
+.hs-btn.visited            { background: var(--yellow); border-color: var(--yellow); color: var(--navy); animation: none; box-shadow: none; }
+
+@keyframes hspulsering {
+  0%   { box-shadow: 0 0 0 0 rgba(1,151,222,0.6); }
+  70%  { box-shadow: 0 0 0 14px rgba(1,151,222,0); }
+  100% { box-shadow: 0 0 0 0 rgba(1,151,222,0); }
+}
+
+.hs-tooltip {
+  position: absolute;
+  bottom: calc(100% + 10px); left: 50%;
+  transform: translateX(-50%);
+  background: rgba(9,15,30,0.95);
+  border: 1px solid var(--yellow);
+  color: var(--white);
+  font-size: 0.75rem; font-weight: 600;
+  padding: 6px 12px; border-radius: 6px;
+  white-space: nowrap; pointer-events: none;
+  opacity: 0; transition: opacity 0.2s;
+  font-family: 'DM Sans', sans-serif; letter-spacing: 0.03em;
+  z-index: 20;
+}
+.hs-tooltip::after {
+  content: '';
+  position: absolute; top: 100%; left: 50%;
+  transform: translateX(-50%);
+  border: 5px solid transparent; border-top-color: var(--yellow);
+}
+.hs-btn:hover .hs-tooltip,
+.hs-btn:focus-visible .hs-tooltip { opacity: 1; }
+
+.hs-continue-wrap {
+  display: flex; align-items: center; justify-content: space-between;
+  flex-wrap: wrap; gap: 14px; margin-top: 24px;
+}
+.hs-locked-msg {
+  font-size: 0.82rem; color: var(--text-muted);
+  display: flex; align-items: center; gap: 8px;
+}
+
+/* ── SHARED BUTTONS ─────────────────────────────────── */
+.btn {
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 14px 28px; border-radius: 8px;
+  font-family: 'DM Sans', sans-serif; font-size: 0.92rem; font-weight: 600;
+  cursor: pointer; border: 2px solid transparent;
+  transition: transform 0.15s, opacity 0.15s, box-shadow 0.15s;
+  text-decoration: none; letter-spacing: 0.02em;
+}
+.btn:focus-visible { outline: 3px solid var(--yellow); outline-offset: 3px; }
+.btn:hover         { transform: translateY(-2px); box-shadow: 0 8px 20px rgba(0,0,0,0.2); }
+.btn:active        { transform: translateY(0); }
+.btn[hidden]       { display: none !important; }
+
+.btn-primary              { background: var(--yellow); color: var(--navy); border-color: var(--yellow); }
+.btn-primary:hover        { background: #ffd740; }
+.btn-secondary            { background: transparent; color: var(--white); border-color: rgba(255,255,255,0.25); }
+.btn-secondary:hover      { border-color: rgba(255,255,255,0.5); background: rgba(255,255,255,0.05); }
+
+.btn-next {
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 14px 28px; border-radius: 8px;
+  font-family: 'DM Sans', sans-serif; font-size: 0.92rem; font-weight: 600;
+  cursor: pointer; border: 2px solid var(--yellow);
+  background: var(--yellow); color: var(--navy);
+  transition: transform 0.15s, opacity 0.15s;
+  margin-top: 8px;
+}
+.btn-next:focus-visible { outline: 3px solid var(--white); outline-offset: 3px; }
+.btn-next:hover         { transform: translateY(-2px); background: #ffd740; }
+.btn-next[hidden]       { display: none !important; }
+
+/* ── MODALS (shared base) ────────────────────────────── */
+.modal-backdrop {
+  display: none;
+  position: fixed; inset: 0; z-index: 500;
+  background: rgba(9,15,30,0.92);
+  backdrop-filter: blur(6px);
+  align-items: center; justify-content: center;
+  padding: 24px;
+}
+.modal-backdrop.open { display: flex; animation: modalIn 0.3s ease; }
+
+@keyframes modalIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+.modal-inner {
+  max-width: 680px; width: 100%;
+  background: #111827;
+  border-radius: 16px; overflow: hidden;
+  box-shadow: 0 40px 100px rgba(0,0,0,0.7), 0 0 0 1px rgba(255,255,255,0.08);
+  animation: modalSlide 0.3s ease;
+}
+.modal-inner.wide { max-width: 860px; }
+
+@keyframes modalSlide {
+  from { opacity: 0; transform: translateY(20px) scale(0.97); }
+  to   { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+.modal-header {
+  background: var(--navy);
+  padding: 16px 24px;
+  display: flex; align-items: center; justify-content: space-between;
+  border-bottom: 3px solid var(--yellow);
+}
+.modal-header-text .modal-eyebrow { font-size: 0.68rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--yellow); margin-bottom: 3px; }
+.modal-header-text .modal-title   { font-family: 'Merriweather', serif; font-size: 1rem; color: var(--white); }
+
+.modal-close {
+  background: rgba(255,255,255,0.08);
+  border: 1px solid rgba(255,255,255,0.15);
+  color: var(--white);
+  width: 36px; height: 36px;
+  border-radius: 50%; font-size: 1.1rem;
+  cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+  transition: background 0.2s; flex-shrink: 0;
+}
+.modal-close:hover         { background: rgba(255,255,255,0.18); }
+.modal-close:focus-visible { outline: 3px solid var(--yellow); }
+
+.modal-body { padding: 28px; }
+.modal-footer {
+  padding: 16px 24px;
+  display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px;
+  border-top: 1px solid var(--border);
+}
+.modal-footer p { font-size: 0.82rem; color: var(--text-muted); line-height: 1.5; }
+
+/* Hotspot modal content */
+.hs-modal-tag {
+  display: inline-block;
+  padding: 4px 14px; border-radius: 12px;
+  font-size: 0.72rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase;
+  margin-bottom: 16px;
+}
+.tag-risk    { background: rgba(192,57,43,0.2);  color: #fc8181; border: 1px solid rgba(192,57,43,0.4); }
+.tag-concern { background: rgba(217,119,6,0.2);  color: #fde68a; border: 1px solid rgba(217,119,6,0.4); }
+.tag-positive{ background: rgba(5,150,105,0.2);  color: #6ee7b7; border: 1px solid rgba(5,150,105,0.4); }
+
+.hs-modal-title { font-family: 'Merriweather', serif; font-size: 1.3rem; color: var(--white); margin-bottom: 12px; line-height: 1.3; }
+.hs-modal-body  { font-size: 0.92rem; color: #c5d3e8; line-height: 1.8; }
+.hs-modal-action {
+  margin-top: 20px; padding: 14px 18px;
+  background: rgba(1,151,222,0.1);
+  border: 1px solid rgba(1,151,222,0.25);
+  border-left: 4px solid var(--blue);
+  border-radius: 0 8px 8px 0;
+  font-size: 0.85rem; color: #c5d3e8; line-height: 1.65;
+}
+.hs-modal-action strong { color: var(--white); }
+
+/* ── PROGRESS BAR ────────────────────────────────────── */
+.module-progress-bar {
+  background: rgba(0,0,0,0.25);
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+  padding: 0 48px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+.progress-track {
+  flex: 1;
+  height: 6px;
+  background: rgba(255,255,255,0.08);
+  border-radius: 10px;
+  overflow: hidden;
+}
+.progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--blue) 0%, var(--yellow) 100%);
+  border-radius: 10px;
+  transition: width 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+  width: 0%;
+  box-shadow: 0 0 8px rgba(253,202,15,0.3);
+}
+.progress-label {
+  font-size: 0.68rem;
+  font-weight: 600;
+  color: rgba(255,255,255,0.45);
+  letter-spacing: 0.07em;
+  white-space: nowrap;
+  min-width: 70px;
+  text-align: right;
+}
+
+/* ── PAGE 5 — FOUR PILLARS ───────────────────────────── */
+#page-5 { background: linear-gradient(160deg, var(--navy-dark) 0%, #1a3466 100%); display: none; }
+#page-5.active { display: flex; flex-direction: column; align-items: center; justify-content: center; }
+
+.pillars-wrap {
+  width: 100%;
+  padding: 48px 48px 56px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.pillars-page-eyebrow {
+  font-size: 0.7rem; font-weight: 700; letter-spacing: 0.16em;
+  text-transform: uppercase; color: var(--yellow);
+  margin-bottom: 10px; text-align: center;
+}
+.pillars-page-title {
+  font-family: 'Merriweather', serif;
+  font-size: 1.9rem; font-weight: 700; text-align: center;
+  margin-bottom: 8px;
+}
+.pillars-page-sub {
+  font-size: 0.88rem; color: var(--text-muted); text-align: center;
+  max-width: 440px; line-height: 1.7; margin-bottom: 48px;
+}
+
+.building {
+  width: 100%;
+  max-width: 860px;
+  user-select: none;
+}
+
+.roof-assembly { position: relative; z-index: 2; }
+
+.pediment {
+  margin: 0 auto;
+  width: 0; height: 0;
+  border-left:  120px solid transparent;
+  border-right: 120px solid transparent;
+  border-bottom: 54px solid rgba(255,255,255,0.13);
+  filter: drop-shadow(0 -3px 10px rgba(0,0,0,0.2));
+}
+
+.entablature {
+  background: rgba(255,255,255,0.12);
+  border: 1px solid rgba(255,255,255,0.18);
+  border-bottom: none;
+  padding: 16px 24px 14px;
+  text-align: center;
+}
+.entablature-title {
+  font-family: 'Merriweather', serif;
+  font-size: 1rem; font-weight: 700;
+}
+.entablature-sub {
+  font-size: 0.68rem; color: var(--text-muted); margin-top: 3px;
+  letter-spacing: 0.07em; text-transform: uppercase;
+}
+
+.pillars-row {
+  display: flex;
+  justify-content: space-between;
+  padding: 0 20px;
+  position: relative; z-index: 1;
+}
+
+.pillar-col {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  cursor: pointer;
+  width: 100px;
+  flex-shrink: 0;
+  transition: filter 0.2s;
+}
+.pillar-col:hover    { filter: brightness(1.12); }
+.pillar-col:focus-visible { outline: 3px solid var(--yellow); outline-offset: 4px; border-radius: 3px; }
+
+.p-capital {
+  width: 100%;
+  height: 13px;
+  border-radius: 2px 2px 0 0;
+  transition: transform 0.22s;
+}
+.pillar-col:hover .p-capital { transform: translateY(-6px); }
+.p-capital-1 { background: var(--blue); box-shadow: 0 0 14px rgba(1,151,222,0.6); }
+.p-capital-2 { background: #7c6ef5;    box-shadow: 0 0 14px rgba(124,110,245,0.6); }
+.p-capital-3 { background: var(--yellow); box-shadow: 0 0 14px rgba(253,202,15,0.5); }
+.p-capital-4 { background: #2ecc8e;    box-shadow: 0 0 14px rgba(46,204,142,0.5); }
+
+.p-shaft {
+  width: 100%;
+  height: 220px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 14px 8px;
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.22s;
+}
+.pillar-col:hover .p-shaft { transform: translateY(-6px); }
+
+.p-shaft-1 { background: linear-gradient(180deg, rgba(1,151,222,0.22) 0%, rgba(1,151,222,0.07) 100%); border-left: 1px solid rgba(1,151,222,0.2); border-right: 1px solid rgba(1,151,222,0.2); }
+.p-shaft-2 { background: linear-gradient(180deg, rgba(124,110,245,0.22) 0%, rgba(124,110,245,0.07) 100%); border-left: 1px solid rgba(124,110,245,0.2); border-right: 1px solid rgba(124,110,245,0.2); }
+.p-shaft-3 { background: linear-gradient(180deg, rgba(253,202,15,0.18) 0%, rgba(253,202,15,0.05) 100%); border-left: 1px solid rgba(253,202,15,0.16); border-right: 1px solid rgba(253,202,15,0.16); }
+.p-shaft-4 { background: linear-gradient(180deg, rgba(46,204,142,0.18) 0%, rgba(46,204,142,0.05) 100%); border-left: 1px solid rgba(46,204,142,0.16); border-right: 1px solid rgba(46,204,142,0.16); }
+
+.p-shaft::before, .p-shaft::after {
+  content: ''; position: absolute; top: 0; bottom: 0; width: 1px; background: rgba(255,255,255,0.05);
+}
+.p-shaft::before { left: 28%; }
+.p-shaft::after  { right: 28%; }
+
+.p-icon  { font-size: 1.5rem; line-height: 1; }
+.p-label {
+  font-family: 'Merriweather', serif;
+  font-size: 0.68rem; font-weight: 700;
+  text-align: center; line-height: 1.45;
+  color: var(--white);
+}
+
+.p-base {
+  width: 114%;
+  height: 11px;
+  border-radius: 0 0 2px 2px;
+  transition: transform 0.22s;
+}
+.pillar-col:hover .p-base { transform: translateY(-6px); }
+.p-base-1 { background: rgba(1,151,222,0.32); }
+.p-base-2 { background: rgba(124,110,245,0.32); }
+.p-base-3 { background: rgba(253,202,15,0.26); }
+.p-base-4 { background: rgba(46,204,142,0.26); }
+
+.stylobate {
+  background: rgba(255,255,255,0.08);
+  border: 1px solid rgba(255,255,255,0.13);
+  border-top: 3px solid rgba(255,255,255,0.17);
+  border-radius: 0 0 8px 8px;
+  padding: 13px 24px;
+  text-align: center;
+}
+.stylobate-text {
+  font-size: 0.67rem; font-weight: 600;
+  letter-spacing: 0.1em; text-transform: uppercase;
+  color: rgba(255,255,255,0.36);
+}
+
+.pillar-hint {
+  text-align: center; font-size: 0.76rem;
+  color: rgba(255,255,255,0.27); margin-top: 18px;
+  letter-spacing: 0.05em;
+  animation: hintfade 3s ease infinite;
+}
+@keyframes hintfade { 0%,100%{opacity:0.4} 50%{opacity:1} }
+
+/* Pillar modal */
+.pillar-modal-stripe { height: 5px; width: 100%; }
+.pillar-modal-icon {
+  width: 46px; height: 46px; border-radius: 12px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.4rem; flex-shrink: 0;
+}
+.pillar-modal-tag  { font-size: 0.65rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 4px; }
+.pillar-modal-name { font-family: 'Merriweather', serif; font-size: 1.15rem; font-weight: 700; color: var(--white); }
+.pillar-section-label {
+  font-size: 0.64rem; font-weight: 700; letter-spacing: 0.14em;
+  text-transform: uppercase; color: rgba(255,255,255,0.38); margin-bottom: 9px;
+}
+.pillar-definition { font-size: 0.9rem; color: var(--text-muted); line-height: 1.82; margin-bottom: 22px; }
+.pillar-rule { height: 1px; background: rgba(255,255,255,0.07); margin-bottom: 18px; }
+.pillar-key-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+.pillar-key-item {
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.07);
+  border-radius: 8px; padding: 10px 13px;
+  font-size: 0.79rem; color: var(--text-muted);
+  display: flex; align-items: center; gap: 9px; line-height: 1.4;
+}
+.pillar-key-dot { width: 6px; height: 6px; border-radius: 50%; flex-shrink: 0; }
+
+/* Reset / retry button */
+.btn-reset {
+  display: inline-flex; align-items: center; gap: 10px;
+  padding: 12px 22px; border-radius: 8px;
+  font-family: 'DM Sans', sans-serif; font-size: 0.88rem; font-weight: 600;
+  cursor: pointer;
+  background: transparent;
+  border: 2px solid rgba(255,255,255,0.22);
+  color: rgba(255,255,255,0.75);
+  transition: border-color 0.2s, background 0.2s, color 0.2s;
+  margin-top: 8px;
+}
+.btn-reset:hover {
+  border-color: rgba(255,255,255,0.5);
+  background: rgba(255,255,255,0.06);
+  color: var(--white);
+}
+.btn-reset:focus-visible { outline: 3px solid var(--yellow); outline-offset: 3px; }
+.btn-reset svg { flex-shrink: 0; }
+.btn-reset[hidden] { display: none !important; }
+
+/* ── FOOTER ─────────────────────────────────────────── */
+footer {
+  background: var(--navy-dark);
+  border-top: 1px solid rgba(255,255,255,0.08);
+  padding: 14px 48px;
+  display: flex; align-items: center; justify-content: space-between;
+}
+.footer-copy  { font-size: 0.72rem; color: rgba(255,255,255,0.3); letter-spacing: 0.04em; }
+.footer-wcag  { display: flex; align-items: center; gap: 10px; }
+.footer-logo {
+  height: 28px;
+  width: auto;
+  opacity: 0.5;
+  filter: brightness(0) invert(1);
+  transition: opacity 0.2s;
+}
+.footer-wcag-text {
+  font-size: 0.68rem; color: rgba(255,255,255,0.3);
+  letter-spacing: 0.05em;
+}
+.wcag-icon {
+  width: 44px; height: 44px;
+  opacity: 0.75;
+  flex-shrink: 0;
+}
+
+/* ── RESPONSIVE ─────────────────────────────────────── */
+@media (max-width: 900px) {
+  header, footer                 { padding: 14px 20px; }
+  .progress-nav                  { padding: 0 12px; }
+  .nav-step                      { padding: 0 8px; gap: 6px; }
+  .nav-step-label                { display: none; }
+  .nav-divider                   { width: 12px; }
+  .module-progress-bar           { padding: 0 20px; }
+  .intro-hero, .scenario-wrap    { grid-template-columns: 1fr; padding: 28px 20px; gap: 28px; }
+  .info-grid                     { grid-template-columns: 1fr; }
+  .info-section:nth-child(even)  { padding-left: 0; border-left: none; }
+  .clipboard-wrap                { padding: 28px 20px; }
+  .hotspot-wrap                  { padding: 28px 20px; }
+  .intro-heading                 { font-size: 1.9rem; }
+  .pillars-wrap                  { padding: 28px 20px 40px; }
+  .pillars-row                   { gap: 10px; padding: 0 8px; }
+  .pillar-col                    { width: 72px; }
+  .p-shaft                       { height: 160px; }
+  .p-label                       { font-size: 0.6rem; }
+}
+
+/* ── MODAL WIDE VARIANT ─────────────────────────────── */
+.modal-wide {
+  width: min(860px, 94vw);
+  max-width: 860px;
+}
+
+/* ── PILLAR 3-COLUMN LAYOUT ─────────────────────────── */
+.pillar-section-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 14px;
+}
+.pillar-section-col { display: flex; flex-direction: column; gap: 6px; }
+.pillar-col-label {
+  font-size: 0.64rem; font-weight: 700; letter-spacing: 0.12em;
+  text-transform: uppercase; margin-bottom: 6px; padding-bottom: 6px;
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+}
+.visited-pillar .p-shaft { opacity: 0.6; }
+.visited-pillar .p-capital::after {
+  content: '✓';
+  position: absolute; top: -18px; left: 50%; transform: translateX(-50%);
+  font-size: 0.7rem; color: #6ee7b7;
+}
+.p-capital { position: relative; }
+
+/* ── VIEW NOTES BUTTON ──────────────────────────────── */
+.btn-notes {
+  display: inline-flex; align-items: center; gap: 10px;
+  padding: 11px 22px; border-radius: 8px;
+  font-family: 'DM Sans', sans-serif; font-size: 0.88rem; font-weight: 600;
+  cursor: pointer;
+  background: rgba(1,151,222,0.15);
+  border: 2px solid rgba(1,151,222,0.4);
+  color: #7dd3fc;
+  transition: background 0.2s, border-color 0.2s;
+  margin-bottom: 28px;
+}
+.btn-notes:hover { background: rgba(1,151,222,0.25); border-color: rgba(1,151,222,0.7); }
+.btn-notes:focus-visible { outline: 3px solid var(--yellow); outline-offset: 3px; }
+
+/* ── ACP WRAP ───────────────────────────────────────── */
+.acp-wrap {
+  width: 100%; padding: 48px 48px 56px;
+  display: flex; flex-direction: column; align-items: center;
+}
+#page-6 { background: linear-gradient(160deg, var(--navy-dark) 0%, #1a2e52 100%); display: none; }
+#page-6.active { display: flex; flex-direction: column; align-items: center; }
+
+/* ── ACP FORM ───────────────────────────────────────── */
+.acp-form {
+  width: 100%; max-width: 860px;
+  display: flex; flex-direction: column; gap: 24px;
+}
+.acp-section {
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.09);
+  border-radius: 14px;
+  overflow: hidden;
+}
+.acp-section-header {
+  display: flex; align-items: center; gap: 14px;
+  background: rgba(255,255,255,0.05);
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+  padding: 14px 22px;
+}
+.acp-section-num {
+  width: 28px; height: 28px; border-radius: 50%;
+  background: var(--blue); color: var(--white);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 0.78rem; font-weight: 700; flex-shrink: 0;
+}
+.acp-section-title {
+  font-family: 'Merriweather', serif; font-size: 0.95rem;
+  font-weight: 700; color: var(--white); margin: 0;
+}
+.acp-fields {
+  padding: 20px 22px;
+  display: flex; flex-direction: column; gap: 14px;
+}
+.acp-field-row {
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px;
+}
+.acp-field { display: flex; flex-direction: column; gap: 6px; }
+.acp-field-wide { grid-column: span 1; }
+.acp-label {
+  font-size: 0.72rem; font-weight: 600; letter-spacing: 0.04em;
+  color: rgba(255,255,255,0.5); text-transform: uppercase;
+}
+.acp-input {
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.14);
+  border-radius: 8px;
+  padding: 10px 14px;
+  color: var(--white);
+  font-family: 'DM Sans', sans-serif; font-size: 0.88rem;
+  transition: border-color 0.2s, background 0.2s;
+  width: 100%;
+}
+.acp-input::placeholder { color: rgba(255,255,255,0.25); }
+.acp-input:focus { outline: none; border-color: var(--blue); background: rgba(1,151,222,0.08); }
+.acp-textarea { resize: vertical; min-height: 72px; }
+select.acp-input { cursor: pointer; }
+option { background: #1a2e52; color: white; }
+
+/* ACP table for family section */
+.acp-table-row {
+  display: grid; grid-template-columns: 2fr 1.5fr 1.5fr 1fr; gap: 10px; align-items: center;
+}
+.acp-table-head {
+  font-size: 0.68rem; font-weight: 700; letter-spacing: 0.06em;
+  text-transform: uppercase; color: rgba(255,255,255,0.35);
+  padding-bottom: 6px; border-bottom: 1px solid rgba(255,255,255,0.07);
+}
+
+/* ACP checklist */
+.acp-checklist {
+  padding: 16px 22px 20px;
+  display: grid; grid-template-columns: 1fr 1fr; gap: 10px;
+}
+.acp-check-item {
+  display: flex; align-items: center; gap: 10px;
+  font-size: 0.86rem; color: var(--text-muted); cursor: pointer;
+}
+.acp-check-item input[type="checkbox"] {
+  width: 18px; height: 18px; accent-color: var(--blue); cursor: pointer; flex-shrink: 0;
+}
+.acp-check-item:hover { color: var(--white); }
+
+/* ACP form footer */
+.acp-form-footer {
+  width: 100%; max-width: 860px;
+  margin-top: 28px;
+  display: flex; justify-content: space-between; align-items: center;
+  flex-wrap: wrap; gap: 16px;
+}
+.acp-footer-note {
+  font-size: 0.74rem; color: rgba(255,255,255,0.28); font-style: italic;
+}
+
+/* ── ACP NOTES MODAL GRID ───────────────────────────── */
+.acp-notes-grid {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 14px;
+}
+.acp-note-card {
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 10px; padding: 16px 18px;
+}
+.acp-note-label {
+  font-size: 0.63rem; font-weight: 700; letter-spacing: 0.12em;
+  text-transform: uppercase; color: #7dd3fc; margin-bottom: 8px;
+}
+.acp-note-card p {
+  font-size: 0.84rem; color: var(--text-muted); line-height: 1.7;
+}
+
+/* ── RESPONSIVE ADDITIONS ───────────────────────────── */
+@media (max-width: 900px) {
+  .pillar-section-row      { grid-template-columns: 1fr; }
+  .acp-wrap                { padding: 28px 20px 40px; }
+  .acp-field-row           { grid-template-columns: 1fr; }
+  .acp-table-row           { grid-template-columns: 1fr 1fr; }
+  .acp-checklist           { grid-template-columns: 1fr; }
+  .acp-notes-grid          { grid-template-columns: 1fr; }
+  .acp-form-footer         { flex-direction: column; align-items: flex-start; }
+}
+
+/* ══════════════════════════════════════════════════════
+   PAGE 6 — SOPHIE & CLAIRE
+══════════════════════════════════════════════════════ */
+#page-6 {
+  background: linear-gradient(160deg, #0d1829 0%, #1a2642 100%);
+  display: none; min-height: 100vh;
+}
+#page-6.active { display: flex; flex-direction: column; align-items: stretch; }
+
+.sophie-wrap {
+  width: 100%; padding: 48px 48px 64px;
+  display: flex; flex-direction: column; align-items: center;
+}
+.sophie-layout {
+  display: grid; grid-template-columns: 380px 1fr;
+  gap: 48px; width: 100%; max-width: 1060px; align-items: start;
+}
+
+/* Scene image */
+.sophie-image-frame {
+  width: 100%; aspect-ratio: 3/4; border-radius: 16px;
+  overflow: hidden; background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.08);
+  display: flex; align-items: center; justify-content: center;
+  position: relative;
+}
+.sophie-image-frame img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.sophie-img-placeholder {
+  display: flex; flex-direction: column; align-items: center;
+  gap: 12px; color: rgba(255,255,255,0.2); font-size: 0.75rem;
+}
+.sophie-image-frame.sophie-img-fallback .sophie-img-placeholder { display: flex; }
+
+/* Claire card */
+.claire-card {
+  margin-top: 16px; padding: 18px 20px;
+  background: rgba(124,110,245,0.08);
+  border: 1px solid rgba(124,110,245,0.25);
+  border-radius: 12px;
+}
+.claire-card-header {
+  display: flex; align-items: center; gap: 14px; margin-bottom: 10px;
+}
+.claire-initial {
+  width: 38px; height: 38px; border-radius: 50%;
+  background: rgba(124,110,245,0.3);
+  color: #c4b5fd; font-family: 'Merriweather', serif;
+  font-size: 1.1rem; font-weight: 700;
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0;
+}
+.claire-name  { font-family: 'Merriweather', serif; font-size: 0.95rem; font-weight: 700; color: var(--white); }
+.claire-dates { font-size: 0.72rem; color: #c4b5fd; letter-spacing: 0.06em; margin-top: 2px; }
+.claire-note  { font-size: 0.82rem; color: var(--text-muted); line-height: 1.7; margin: 0; }
+
+/* Right column */
+.sophie-heading {
+  font-family: 'Merriweather', serif; font-size: 2rem;
+  font-weight: 700; color: var(--white); margin: 0 0 20px;
+}
+.sophie-body {
+  font-size: 0.94rem; color: var(--text-muted);
+  line-height: 1.85; margin: 0 0 14px;
+}
+
+/* Pull quote */
+.sophie-quote {
+  position: relative;
+  margin: 28px 0; padding: 20px 22px 20px 32px;
+  background: rgba(253,202,15,0.06);
+  border-left: 3px solid var(--yellow);
+  border-radius: 0 10px 10px 0;
+}
+.sophie-quote-mark {
+  position: absolute; top: 8px; left: 14px;
+  font-size: 2.5rem; line-height: 1; color: rgba(253,202,15,0.35);
+  font-family: 'Merriweather', serif;
+}
+.sophie-quote p { font-size: 0.92rem; color: var(--white); font-style: italic; line-height: 1.7; margin: 0 0 8px; }
+.sophie-quote-attr { font-size: 0.72rem; color: rgba(253,202,15,0.6); letter-spacing: 0.04em; }
+
+/* Reflection box */
+.sophie-reflection {
+  background: rgba(1,151,222,0.07);
+  border: 1px solid rgba(1,151,222,0.2);
+  border-radius: 12px; padding: 18px 20px;
+  margin-top: 6px;
+}
+.sophie-reflection-title {
+  display: flex; align-items: center; gap: 8px;
+  font-size: 0.72rem; font-weight: 700;
+  letter-spacing: 0.1em; text-transform: uppercase;
+  color: #7dd3fc; margin-bottom: 12px;
+}
+.sophie-prompts {
+  margin: 0; padding-left: 18px;
+  display: flex; flex-direction: column; gap: 8px;
+}
+.sophie-prompts li {
+  font-size: 0.85rem; color: var(--text-muted); line-height: 1.65;
+}
+.sophie-prompts li strong { color: var(--white); }
+
+
+/* ── PAGE 7 — ACP ───────────────────────────────────── */
+#page-7 {
+  background: linear-gradient(160deg, var(--navy-dark) 0%, #1a2e52 100%);
+  display: none;
+}
+#page-7.active { display: block; }
+
+/* Floating notes button */
+.acp-float-btn {
+  position: fixed;
+  bottom: 28px; right: 28px; z-index: 200;
+  display: none;
+  align-items: center; gap: 10px;
+  padding: 13px 22px;
+  background: var(--blue);
+  border: none; border-radius: 50px;
+  color: var(--white);
+  font-family: 'DM Sans', sans-serif; font-size: 0.86rem; font-weight: 600;
+  cursor: pointer;
+  box-shadow: 0 4px 24px rgba(1,151,222,0.45);
+  transition: background 0.2s, box-shadow 0.2s, transform 0.15s;
+}
+.acp-float-btn:hover {
+  background: #0181be;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 28px rgba(1,151,222,0.55);
+}
+.acp-float-btn:focus-visible { outline: 3px solid var(--yellow); outline-offset: 3px; }
+body.acp-notes-visible .acp-float-btn { display: flex; }
+
+/* ── ACP VALIDATION COLOURS ─────────────────────────── */
+.acp-input.acp-correct {
+  border-color: #34d399;
+  background: rgba(52,211,153,0.08);
+  color: var(--white);
+}
+.acp-input.acp-correct:focus { border-color: #6ee7b7; }
+
+.acp-input.acp-incorrect {
+  border-color: #f87171;
+  background: rgba(248,113,113,0.07);
+}
+.acp-input.acp-incorrect:focus { border-color: #fca5a5; }
+
+/* Checklist hint labels */
+.acp-check-correct .acp-check-hint { color: #6ee7b7; font-size: 0.72rem; margin-left: 6px; }
+.acp-check-pending .acp-check-hint { color: #fde68a; font-size: 0.72rem; margin-left: 6px; }
+.acp-check-hint { display: inline; }
+
+
+/* ══════════════════════════════════════════════════════
+   PRINT STYLES
+══════════════════════════════════════════════════════ */
+@media print {
+  header, nav, .module-progress-bar, .acp-sidebar,
+  .acp-float-btn, .acp-form-footer, footer,
+  .btn, button, .modal-backdrop { display: none !important; }
+
+  body, #page-7 {
+    background: white !important; color: #111 !important;
+    display: block !important;
+  }
+
+  .page { display: none !important; }
+  #page-7 { display: block !important; }
+
+  .acp-page-layout { display: block !important; }
+  .acp-main { padding: 0 !important; }
+
+  .pillars-page-eyebrow { color: #555 !important; }
+  .pillars-page-title   { color: #111 !important; font-size: 1.4rem !important; }
+  .pillars-page-sub     { color: #444 !important; font-size: 0.85rem !important; }
+
+  .acp-section {
+    background: white !important;
+    border: 1px solid #ccc !important;
+    break-inside: avoid; margin-bottom: 14px;
+    border-radius: 6px !important;
+  }
+  .acp-section-header {
+    background: #f5f5f5 !important;
+    border-bottom: 1px solid #ddd !important;
+    padding: 10px 16px !important;
+  }
+  .acp-section-num { background: #0197de !important; }
+  .acp-section-title { color: #111 !important; font-size: 0.9rem !important; }
+
+  .acp-label   { color: #555 !important; }
+  .acp-input   {
+    background: white !important; border: 1px solid #bbb !important;
+    color: #111 !important; font-size: 0.85rem !important;
+  }
+  .acp-input.acp-correct   { border-color: #16a34a !important; background: #f0fdf4 !important; }
+  .acp-input.acp-incorrect { border-color: #dc2626 !important; background: #fef2f2 !important; }
+
+  .acp-checklist { padding: 12px 16px !important; }
+  .acp-check-item { color: #333 !important; }
+  .acp-check-correct .acp-check-hint { color: #16a34a !important; }
+  .acp-check-pending .acp-check-hint { color: #b45309 !important; }
+
+  .acp-table-head span { color: #555 !important; }
+
+  @page { margin: 15mm; }
+}
+
+
+/* ══════════════════════════════════════════════════════
+   RESPONSIVE — SOPHIE & ACP SIDEBAR
+══════════════════════════════════════════════════════ */
+@media (max-width: 900px) {
+  .sophie-layout      { grid-template-columns: 1fr; }
+  .sophie-wrap        { padding: 28px 20px 48px; }
+}
