@@ -728,59 +728,22 @@
      PAGE 7 — ADVANCE CARE PLAN ACTIVITY
 ══════════════════════════════════════════════════════ -->
 <section class="page" id="page-7" aria-label="Advance Care Plan activity">
-  <div class="acp-page-layout">
 
-    <!-- ── STICKY SIDEBAR ── -->
-    <aside class="acp-sidebar" aria-label="Helen's notes — reference panel">
-      <div class="acp-sidebar-header">
-        <span aria-hidden="true">📋</span>
-        <span>Helen's Notes</span>
-      </div>
-      <div class="acp-sidebar-body">
+  <!-- Floating notes button — follows scroll -->
+  <button class="acp-float-btn" onclick="openAcpModal()" aria-label="View Helen's notes">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+    Helen's Notes
+  </button>
 
-        <div class="acp-sidebar-card">
-          <div class="acp-sidebar-label">Personal</div>
-          <p><strong>Helen Marsh</strong>, born 14 March 1951 (75). Lives with husband <strong>Simon (68)</strong> and granddaughter <strong>Sophie (14)</strong>. Faith: <strong>Christian</strong>.</p>
-        </div>
-
-        <div class="acp-sidebar-card">
-          <div class="acp-sidebar-label">Clinical</div>
-          <p>Stage 4 ovarian cancer, pulmonary metastases. O₂ 2L/min. Prognosis: weeks–months. DNR in place.</p>
-        </div>
-
-        <div class="acp-sidebar-card">
-          <div class="acp-sidebar-label">What Matters to Helen</div>
-          <p>Dignity &amp; privacy. Does not want to be a burden. Faith is her main source of peace. Wants clinical discussions in her presence only.</p>
-        </div>
-
-        <div class="acp-sidebar-card">
-          <div class="acp-sidebar-label">Care Preferences</div>
-          <p>Strong wish to <strong>remain at home</strong>. Does not want to die in hospital. Would consider the hospice only if home care becomes unmanageable.</p>
-        </div>
-
-        <div class="acp-sidebar-card">
-          <div class="acp-sidebar-label">Family Context</div>
-          <p>Simon: carer strain, night shifts, financial pressure. Sophie (14): anticipatory grief, also bereaved — her mother <strong>Claire</strong> died of ovarian cancer in 2022. Refer to youth bereavement services.</p>
-        </div>
-
-        <div class="acp-sidebar-card">
-          <div class="acp-sidebar-label">Documents</div>
-          <p>DNR confirmed. No LPA yet. No formal ACP. ReSPECT form not completed. Medications listed.</p>
-        </div>
-
-      </div>
-    </aside>
-
-    <!-- ── MAIN FORM COLUMN ── -->
-    <div class="acp-main">
+  <div class="acp-wrap">
 
       <p class="pillars-page-eyebrow">Care Planning Activity</p>
-      <h2 class="pillars-page-title" style="text-align:left;">Helen's Advance Care Plan</h2>
-      <p class="pillars-page-sub" style="text-align:left; max-width:100%; margin-bottom:8px;">
+      <h2 class="pillars-page-title">Helen's Advance Care Plan</h2>
+      <p class="pillars-page-sub" style="max-width:680px;">
         Using everything you have learned about Helen, complete the sections below.
-        Fields will highlight <span style="color:#6ee7b7; font-weight:600;">green</span> when correct
-        and <span style="color:#f87171; font-weight:600;">red</span> if a key detail is missing or wrong.
-        Helen's notes are pinned to the left for reference.
+        Fields highlight <span style="color:#6ee7b7; font-weight:600;">green</span> when correct
+        and <span style="color:#f87171; font-weight:600;">red</span> when a key detail needs attention.
+        Use <strong>Helen's Notes</strong> (floating bottom-right) at any time for reference.
       </p>
 
       <div class="acp-form" role="form" aria-label="Advance Care Plan form">
@@ -1005,7 +968,6 @@
         </div>
       </div>
 
-    </div><!-- /acp-main -->
   </div>
 </section>
 
