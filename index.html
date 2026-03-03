@@ -638,12 +638,12 @@
       <!-- Left: scene image -->
       <div class="sophie-left">
         <div class="sophie-image-frame" role="img" aria-label="Sophie in her bedroom — a photograph of her mother Claire on the windowsill">
-          <img src="images/sophie.png"
+          <img src="images/helen_sophie.png"
                alt="Sophie sitting quietly in her bedroom. A photograph of Claire is visible on the windowsill."
                onerror="this.style.display='none'; this.parentElement.classList.add('sophie-img-fallback')">
           <div class="sophie-img-placeholder" aria-hidden="true">
             <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.2)" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
-            <span>sophie.png</span>
+            <span>helen_sophie.png</span>
           </div>
         </div>
 
@@ -759,55 +759,31 @@
               <div class="acp-field">
                 <label class="acp-label" for="acp-firstname">First name</label>
                 <input class="acp-input acp-validate" id="acp-firstname" type="text"
-                  placeholder="First name"
+                  placeholder="Enter first name"
                   data-answer="helen" data-match="contains">
               </div>
               <div class="acp-field">
                 <label class="acp-label" for="acp-surname">Surname</label>
                 <input class="acp-input acp-validate" id="acp-surname" type="text"
-                  placeholder="Surname"
+                  placeholder="Enter surname"
                   data-answer="marsh" data-match="contains">
-              </div>
-              <div class="acp-field">
-                <label class="acp-label" for="acp-preferred">Preferred name</label>
-                <input class="acp-input acp-validate" id="acp-preferred" type="text"
-                  placeholder="What she likes to be called"
-                  data-answer="helen" data-match="contains">
               </div>
             </div>
             <div class="acp-field-row">
               <div class="acp-field">
                 <label class="acp-label" for="acp-dob">Date of birth</label>
                 <input class="acp-input acp-validate" id="acp-dob" type="text"
-                  placeholder="e.g. 14 March 1951"
+                  placeholder="DD Month YYYY"
                   data-answer="1951" data-match="contains">
               </div>
               <div class="acp-field">
                 <label class="acp-label" for="acp-faith">Religion / spiritual faith</label>
                 <input class="acp-input acp-validate" id="acp-faith" type="text"
-                  placeholder="e.g. Christian"
+                  placeholder="Enter faith or belief"
                   data-answer="christian" data-match="contains">
               </div>
-              <div class="acp-field">
-                <label class="acp-label" for="acp-partner">Partner / husband / wife</label>
-                <input class="acp-input acp-validate" id="acp-partner" type="text"
-                  placeholder="Name of partner"
-                  data-answer="simon" data-match="contains">
-              </div>
             </div>
-            <div class="acp-field-row">
-              <div class="acp-field" style="grid-column:span 2">
-                <label class="acp-label" for="acp-liveswith">Lives with</label>
-                <input class="acp-input acp-validate" id="acp-liveswith" type="text"
-                  placeholder="Who does Helen live with?"
-                  data-answer="simon" data-match="contains">
-              </div>
-              <div class="acp-field">
-                <label class="acp-label" for="acp-nhs">NHS number</label>
-                <input class="acp-input" id="acp-nhs" type="text"
-                  placeholder="Leave blank if unknown">
-              </div>
-            </div>
+
           </div>
         </div>
 
@@ -822,11 +798,11 @@
               <span>Name</span><span>Relationship</span><span>Role / notes</span><span>Next of Kin?</span>
             </div>
             <div class="acp-table-row">
-              <input class="acp-input acp-validate" type="text" placeholder="Name"
+              <input class="acp-input acp-validate" type="text" placeholder="Full name"
                 aria-label="Family member 1 name" data-answer="simon" data-match="contains">
-              <input class="acp-input acp-validate" type="text" placeholder="Relationship"
+              <input class="acp-input acp-validate" type="text" placeholder="e.g. husband, granddaughter"
                 aria-label="Relationship" data-answer="husband" data-match="contains">
-              <input class="acp-input acp-validate" type="text" placeholder="e.g. primary carer"
+              <input class="acp-input acp-validate" type="text" placeholder="Role in care"
                 aria-label="Role" data-answer="carer" data-match="contains">
               <select class="acp-input acp-validate-select" aria-label="Next of kin"
                 data-answer="yes">
@@ -834,9 +810,9 @@
               </select>
             </div>
             <div class="acp-table-row">
-              <input class="acp-input acp-validate" type="text" placeholder="Name"
+              <input class="acp-input acp-validate" type="text" placeholder="Full name"
                 aria-label="Family member 2 name" data-answer="sophie" data-match="contains">
-              <input class="acp-input acp-validate" type="text" placeholder="Relationship"
+              <input class="acp-input acp-validate" type="text" placeholder="e.g. husband, granddaughter"
                 aria-label="Relationship" data-answer="granddaughter" data-match="contains">
               <input class="acp-input" type="text" placeholder="e.g. youth bereavement referral needed"
                 aria-label="Notes">
@@ -857,31 +833,31 @@
             <div class="acp-field">
               <label class="acp-label" for="acp-placecare">Preferred place of care</label>
               <input class="acp-input acp-validate" id="acp-placecare" type="text"
-                placeholder="e.g. own home, hospice, care home"
+                placeholder="Where does Helen prefer to receive care?"
                 data-answer="home" data-match="contains">
             </div>
             <div class="acp-field">
               <label class="acp-label" for="acp-placedeath">Preferred place of death (first choice)</label>
               <input class="acp-input acp-validate" id="acp-placedeath" type="text"
-                placeholder="e.g. own home"
+                placeholder="First preference"
                 data-answer="home" data-match="contains">
             </div>
             <div class="acp-field">
               <label class="acp-label" for="acp-placedeath2">Preferred place of death (if first not possible)</label>
               <input class="acp-input acp-validate" id="acp-placedeath2" type="text"
-                placeholder="e.g. hospice"
+                placeholder="If first preference is not possible"
                 data-answer="hospice" data-match="contains">
             </div>
             <div class="acp-field">
               <label class="acp-label" for="acp-notwant">What Helen does NOT want to happen</label>
               <textarea class="acp-input acp-textarea acp-validate" id="acp-notwant" rows="2"
-                placeholder="e.g. does not want to die in hospital, does not want to feel like a burden"
+                placeholder="What would Helen not want to happen?"
                 data-answer="hospital" data-match="contains"></textarea>
             </div>
             <div class="acp-field">
               <label class="acp-label" for="acp-familycomments">Family / carer comments</label>
               <textarea class="acp-input acp-textarea" id="acp-familycomments" rows="2"
-                placeholder="What has been discussed with Simon? What about Sophie?"></textarea>
+                placeholder="Record any discussions with family or carers"></textarea>
             </div>
           </div>
         </div>
@@ -896,19 +872,19 @@
             <div class="acp-field">
               <label class="acp-label" for="acp-people">People (and pets) important to Helen</label>
               <textarea class="acp-input acp-textarea acp-validate" id="acp-people" rows="2"
-                placeholder="Who matters most to her?"
+                placeholder="List the people important to Helen"
                 data-answer="simon|sophie|family" data-match="contains-any"></textarea>
             </div>
             <div class="acp-field">
               <label class="acp-label" for="acp-places">Places or things important to Helen</label>
               <textarea class="acp-input acp-textarea acp-validate" id="acp-places" rows="2"
-                placeholder="e.g. her home, faith, particular belongings"
+                placeholder="What places or things are meaningful to her?"
                 data-answer="home|faith|church|prayer" data-match="contains-any"></textarea>
             </div>
             <div class="acp-field">
               <label class="acp-label" for="acp-wayoflife">The way she lives her life that is important to her</label>
               <textarea class="acp-input acp-textarea acp-validate" id="acp-wayoflife" rows="2"
-                placeholder="e.g. faith, dignity, privacy, daily routines"
+                placeholder="How does she like to live her life?"
                 data-answer="dignity|faith|privacy" data-match="contains-any"></textarea>
             </div>
           </div>
