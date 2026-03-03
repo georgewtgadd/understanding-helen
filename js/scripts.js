@@ -45,6 +45,9 @@ function goToPage(num) {
   updateProgressBar(num);
   window.scrollTo({ top: 0, behavior: 'smooth' });
 
+  // Show floating notes button only on page 7
+  document.body.classList.toggle('acp-notes-visible', num === 7);
+
   // Move focus to heading for screen readers
   const heading = page && page.querySelector('h1, h2');
   if (heading) {
