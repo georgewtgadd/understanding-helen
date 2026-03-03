@@ -1030,7 +1030,6 @@ footer {
   /* Typography scaling */
   .intro-heading                 { font-size: 1.9rem; }
   .pillars-page-title            { font-size: 1.6rem; }
-  .sophie-heading                { font-size: 1.6rem; }
 }
 
 /* ── 640px: mobile ───────────────────────────────────── */
@@ -1057,7 +1056,6 @@ footer {
   .scenario-wrap                 { padding: 20px 16px; gap: 20px; }
   .hotspot-wrap                  { padding: 20px 16px; }
   .pillars-wrap                  { padding: 20px 16px 36px; }
-  .sophie-wrap                   { padding: 24px 16px 40px; }
   .acp-wrap                      { padding: 24px 16px 40px; }
 
   /* Typography */
@@ -1065,7 +1063,6 @@ footer {
   .intro-desc                    { font-size: 0.88rem; }
   .pillars-page-title            { font-size: 1.4rem; }
   .pillars-page-sub              { font-size: 0.84rem; }
-  .sophie-heading                { font-size: 1.4rem; }
   .sophie-body                   { font-size: 0.88rem; }
   .clipboard-title-area h2       { font-size: 1.4rem; }
 
@@ -1088,10 +1085,6 @@ footer {
   .p-label                       { font-size: 0.52rem; }
   .entablature-title             { font-size: 0.72rem; }
   .entablature-sub               { font-size: 0.55rem; }
-
-  /* Sophie layout */
-  .sophie-layout                 { grid-template-columns: 1fr; gap: 28px; }
-  .sophie-image-frame            { aspect-ratio: 4/3; }
 
   /* ACP form */
   .acp-field-row                 { grid-template-columns: 1fr; }
@@ -1284,7 +1277,8 @@ option { background: #1a2e52; color: white; }
   display: flex; flex-direction: column; align-items: center;
 }
 .sophie-layout {
-  display: grid; grid-template-columns: 380px 1fr;
+  display: grid;
+  grid-template-columns: min(380px, 38%) 1fr;
   gap: 48px; width: 100%; max-width: 1060px; align-items: start;
 }
 
@@ -1368,10 +1362,24 @@ option { background: #1a2e52; color: white; }
   margin: 0; padding-left: 18px;
   display: flex; flex-direction: column; gap: 8px;
 }
-.sophie-prompts li {
-  font-size: 0.85rem; color: var(--text-muted); line-height: 1.65;
-}
+.sophie-prompts li { font-size: 0.85rem; color: var(--text-muted); line-height: 1.65; }
 .sophie-prompts li strong { color: var(--white); }
+
+/* Sophie responsive — must come AFTER base definitions */
+@media (max-width: 900px) {
+  .sophie-layout { grid-template-columns: 1fr; gap: 28px; }
+  .sophie-wrap   { padding: 32px 24px 48px; }
+  .sophie-heading { font-size: 1.7rem; }
+}
+@media (max-width: 640px) {
+  .sophie-wrap         { padding: 24px 16px 40px; }
+  .sophie-layout       { gap: 20px; }
+  .sophie-image-frame  { aspect-ratio: 16/9; }
+  .sophie-heading      { font-size: 1.35rem; }
+  .sophie-body         { font-size: 0.88rem; }
+  .sophie-quote p      { font-size: 0.86rem; }
+  .sophie-prompts li   { font-size: 0.82rem; }
+}
 
 
 /* ── PAGE 7 — ACP ───────────────────────────────────── */
