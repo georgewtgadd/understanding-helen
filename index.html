@@ -77,6 +77,14 @@
     <div class="nav-step-num" aria-hidden="true">5</div>
     <span class="nav-step-label">Four Pillars</span>
   </button>
+
+  <div class="nav-divider" aria-hidden="true"></div>
+
+  <button class="nav-step" id="nav-6" onclick="navClick(6)"
+          aria-label="Step 6: Advance Care Plan" disabled>
+    <div class="nav-step-num" aria-hidden="true">6</div>
+    <span class="nav-step-label">Care Plan</span>
+  </button>
 </nav>
 
 <!-- Progress bar -->
@@ -328,10 +336,11 @@
           <p>
             You are now in Helen's home. Before you begin your assessment, take a moment to explore the
             room. Click each hotspot to identify what you notice — you must find all
-            <strong style="color:var(--white);">3 points of interest</strong> before you can continue.
+            <strong style="color:var(--white);">4 points of interest</strong> before you can continue.
           </p>
         </div>
         <div class="hotspot-progress-pills" id="hs-pills" aria-live="polite" aria-label="Hotspot discovery progress">
+          <div class="hotspot-pill" id="pill-1"><div class="pill-dot"></div>Medication</div>
           <div class="hotspot-pill" id="pill-2"><div class="pill-dot"></div>Trip hazard</div>
           <div class="hotspot-pill" id="pill-3"><div class="pill-dot"></div>Television</div>
           <div class="hotspot-pill" id="pill-6"><div class="pill-dot"></div>Isolation</div>
@@ -343,6 +352,12 @@
         <img src="images/helen_hotspot.png"
              alt="Helen's living room with areas of clinical interest highlighted"
              id="hs-image">
+
+        <button class="hs-btn" id="hs-1" style="left:22%; top:72%;"
+                onclick="clickHotspot(1)" aria-label="Explore this area">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
+          <div class="hs-tooltip">Click to explore</div>
+        </button>
 
         <button class="hs-btn" id="hs-2" style="left:62%; top:87%;"
                 onclick="clickHotspot(2)" aria-label="Explore this area">
@@ -367,7 +382,7 @@
       <div class="hs-continue-wrap">
         <div class="hs-locked-msg" id="hs-locked-msg">
           <span aria-hidden="true">🔒</span>
-          <span id="hs-lock-text">Find all 3 hotspots to unlock the next section</span>
+          <span id="hs-lock-text">Find all 4 hotspots to unlock the next section</span>
         </div>
         <button class="btn btn-primary" id="hs-continue-btn" disabled
                 onclick="goToPage(5)"
@@ -468,7 +483,21 @@
 
     <p class="pillar-hint" id="pillar-hint" aria-hidden="true">↑ Click any pillar to explore</p>
 
-    <div style="display:flex; justify-content:flex-start; width:100%; max-width:860px; margin-top:32px;">
+    <!-- Locked continue — unlocks after all 4 pillars opened -->
+    <div class="hs-continue-wrap" style="margin-top:28px; width:100%; max-width:860px;">
+      <div class="hs-locked-msg" id="pillars-locked-msg">
+        <span aria-hidden="true">🔒</span>
+        <span>Explore all four pillars to unlock the next section</span>
+      </div>
+      <button class="btn btn-primary" id="pillars-continue-btn" disabled
+              onclick="goToPage(6)"
+              aria-label="Continue — locked until all pillars explored"
+              style="opacity:0.4; cursor:not-allowed;">
+        Continue to Care Plan →
+      </button>
+    </div>
+
+    <div style="display:flex; justify-content:flex-start; width:100%; max-width:860px; margin-top:16px;">
       <button class="btn btn-secondary" onclick="goToPage(4)"
               style="font-size:0.82rem; padding:10px 18px;"
               aria-label="Back to Helen's Living Room">
@@ -485,7 +514,7 @@
 ══════════════════════════════════════════════════════ -->
 <div id="pillar-modal" class="modal-backdrop" role="dialog" aria-modal="true" aria-labelledby="pm-name">
 
-  <div class="modal-inner">
+  <div class="modal-inner modal-wide">
     <div class="pillar-modal-stripe" id="pm-stripe"></div>
 
     <div class="modal-header" style="background:#0f1c34; border-bottom:1px solid rgba(255,255,255,0.07);">
@@ -500,15 +529,15 @@
     </div>
 
     <div class="modal-body">
-      <div class="pillar-section-label">Definition</div>
+      <div class="pillar-section-label">About this Pillar</div>
       <div class="pillar-definition" id="pm-definition"></div>
       <div class="pillar-rule"></div>
-      <div class="pillar-section-label">Key Areas of Focus</div>
-      <div class="pillar-key-grid" id="pm-key-grid"></div>
+      <div class="pillar-section-label">Holistic Assessment Framework</div>
+      <div id="pm-key-grid"></div>
     </div>
 
     <div class="modal-footer">
-      <p>Explore the remaining pillars, then continue.</p>
+      <p id="pm-hint">Explore the remaining pillars, then continue.</p>
       <button class="btn btn-primary" onclick="closePillarModal()" aria-label="Close and continue exploring">
         Close
       </button>
@@ -591,8 +620,252 @@
 
 
 <!-- ══════════════════════════════════════════════════════
-     FOOTER
+     PAGE 6 — ADVANCE CARE PLAN ACTIVITY
 ══════════════════════════════════════════════════════ -->
+<section class="page" id="page-6" aria-label="Advance Care Plan activity">
+  <div class="acp-wrap">
+
+    <p class="pillars-page-eyebrow">Care Planning Activity</p>
+    <h2 class="pillars-page-title">Helen's Advance Care Plan</h2>
+    <p class="pillars-page-sub" style="max-width:680px;">
+      Using everything you have learned about Helen, complete the key sections of her Advance Care Plan.
+      You can open Helen's notes at any time for reference.
+    </p>
+
+    <button class="btn btn-notes" onclick="openAcpModal()" aria-label="View Helen's notes">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+      View Helen's Notes
+    </button>
+
+    <div class="acp-form" role="form" aria-label="Advance Care Plan form">
+
+      <!-- SECTION 1: Personal Details -->
+      <div class="acp-section">
+        <div class="acp-section-header">
+          <div class="acp-section-num">1</div>
+          <h3 class="acp-section-title">Personal Details</h3>
+        </div>
+        <div class="acp-fields">
+          <div class="acp-field-row">
+            <div class="acp-field">
+              <label class="acp-label" for="acp-firstname">First name</label>
+              <input class="acp-input" id="acp-firstname" type="text" placeholder="e.g. Helen">
+            </div>
+            <div class="acp-field">
+              <label class="acp-label" for="acp-surname">Surname</label>
+              <input class="acp-input" id="acp-surname" type="text" placeholder="e.g. Marsh">
+            </div>
+            <div class="acp-field">
+              <label class="acp-label" for="acp-preferred">Preferred name</label>
+              <input class="acp-input" id="acp-preferred" type="text" placeholder="What does she like to be called?">
+            </div>
+          </div>
+          <div class="acp-field-row">
+            <div class="acp-field">
+              <label class="acp-label" for="acp-dob">Date of birth</label>
+              <input class="acp-input" id="acp-dob" type="text" placeholder="e.g. 14 March 1951">
+            </div>
+            <div class="acp-field">
+              <label class="acp-label" for="acp-faith">Religion / spiritual faith</label>
+              <input class="acp-input" id="acp-faith" type="text" placeholder="e.g. Christian">
+            </div>
+            <div class="acp-field">
+              <label class="acp-label" for="acp-partner">Partner / husband / wife</label>
+              <input class="acp-input" id="acp-partner" type="text" placeholder="Name of partner">
+            </div>
+          </div>
+          <div class="acp-field-row">
+            <div class="acp-field acp-field-wide">
+              <label class="acp-label" for="acp-liveswith">Lives with</label>
+              <input class="acp-input" id="acp-liveswith" type="text" placeholder="Who does Helen live with?">
+            </div>
+            <div class="acp-field acp-field-wide">
+              <label class="acp-label" for="acp-nhs">NHS number</label>
+              <input class="acp-input" id="acp-nhs" type="text" placeholder="Leave blank if unknown">
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- SECTION 2: Family Members & Carers -->
+      <div class="acp-section">
+        <div class="acp-section-header">
+          <div class="acp-section-num">2</div>
+          <h3 class="acp-section-title">Family Members &amp; Informal Carers</h3>
+        </div>
+        <div class="acp-fields">
+          <div class="acp-table-row acp-table-head">
+            <span>Name</span><span>Relationship</span><span>Phone</span><span>Next of Kin?</span>
+          </div>
+          <div class="acp-table-row">
+            <input class="acp-input" type="text" placeholder="Name" aria-label="Family member 1 name">
+            <input class="acp-input" type="text" placeholder="Relationship" aria-label="Relationship">
+            <input class="acp-input" type="text" placeholder="Phone number" aria-label="Phone">
+            <select class="acp-input" aria-label="Next of kin">
+              <option value="">—</option><option>Yes</option><option>No</option>
+            </select>
+          </div>
+          <div class="acp-table-row">
+            <input class="acp-input" type="text" placeholder="Name" aria-label="Family member 2 name">
+            <input class="acp-input" type="text" placeholder="Relationship" aria-label="Relationship">
+            <input class="acp-input" type="text" placeholder="Phone number" aria-label="Phone">
+            <select class="acp-input" aria-label="Next of kin">
+              <option value="">—</option><option>Yes</option><option>No</option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <!-- SECTION 3: Care Preferences -->
+      <div class="acp-section">
+        <div class="acp-section-header">
+          <div class="acp-section-num">3</div>
+          <h3 class="acp-section-title">Future Care Preferences</h3>
+        </div>
+        <div class="acp-fields">
+          <div class="acp-field">
+            <label class="acp-label" for="acp-placecare">Preferred place of care</label>
+            <input class="acp-input" id="acp-placecare" type="text" placeholder="e.g. own home, hospice, care home">
+          </div>
+          <div class="acp-field">
+            <label class="acp-label" for="acp-placedeath">Preferred place of death</label>
+            <input class="acp-input" id="acp-placedeath" type="text" placeholder="e.g. own home, hospice">
+          </div>
+          <div class="acp-field">
+            <label class="acp-label" for="acp-notwant">What Helen does NOT want to happen</label>
+            <textarea class="acp-input acp-textarea" id="acp-notwant" rows="2" placeholder="e.g. does not want to die in hospital"></textarea>
+          </div>
+          <div class="acp-field">
+            <label class="acp-label" for="acp-familycomments">Family / carer comments</label>
+            <textarea class="acp-input acp-textarea" id="acp-familycomments" rows="2" placeholder="What has been discussed with the family?"></textarea>
+          </div>
+        </div>
+      </div>
+
+      <!-- SECTION 4: What Matters -->
+      <div class="acp-section">
+        <div class="acp-section-header">
+          <div class="acp-section-num">4</div>
+          <h3 class="acp-section-title">Who and What is Important to Helen</h3>
+        </div>
+        <div class="acp-fields">
+          <div class="acp-field">
+            <label class="acp-label" for="acp-people">People (and pets) important to Helen</label>
+            <textarea class="acp-input acp-textarea" id="acp-people" rows="2" placeholder="Who matters most to her?"></textarea>
+          </div>
+          <div class="acp-field">
+            <label class="acp-label" for="acp-places">Places or things important to Helen</label>
+            <textarea class="acp-input acp-textarea" id="acp-places" rows="2" placeholder="e.g. her home, faith, particular belongings"></textarea>
+          </div>
+          <div class="acp-field">
+            <label class="acp-label" for="acp-wayoflife">The way she lives her life that is important to her</label>
+            <textarea class="acp-input acp-textarea" id="acp-wayoflife" rows="2" placeholder="e.g. faith, dignity, privacy, daily routines"></textarea>
+          </div>
+        </div>
+      </div>
+
+      <!-- SECTION 5: Things in Place -->
+      <div class="acp-section">
+        <div class="acp-section-header">
+          <div class="acp-section-num">5</div>
+          <h3 class="acp-section-title">Things Helen Has Put in Place</h3>
+        </div>
+        <div class="acp-checklist">
+          <label class="acp-check-item"><input type="checkbox"> <span>Do Not Attempt CPR (DNACPR)</span></label>
+          <label class="acp-check-item"><input type="checkbox"> <span>Carer Emergency Plan (CERS)</span></label>
+          <label class="acp-check-item"><input type="checkbox"> <span>Lasting Power of Attorney</span></label>
+          <label class="acp-check-item"><input type="checkbox"> <span>Advance Care Plan on file</span></label>
+          <label class="acp-check-item"><input type="checkbox"> <span>ReSPECT form</span></label>
+          <label class="acp-check-item"><input type="checkbox"> <span>Medications documented</span></label>
+          <label class="acp-check-item"><input type="checkbox"> <span>Will in place</span></label>
+          <label class="acp-check-item"><input type="checkbox"> <span>Funeral preferences recorded</span></label>
+        </div>
+      </div>
+
+    </div><!-- /acp-form -->
+
+    <div class="acp-form-footer">
+      <p class="acp-footer-note">This is a reflective exercise. Your responses are not saved or submitted.</p>
+      <div style="display:flex; gap:16px; flex-wrap:wrap; align-items:center;">
+        <button class="btn btn-secondary" onclick="goToPage(5)" aria-label="Back to Four Pillars">
+          <span aria-hidden="true">←</span> Back to Four Pillars
+        </button>
+        <button class="btn btn-primary" onclick="goToPage(6)" style="background:var(--yellow); color:var(--navy);" aria-label="Module complete">
+          Complete Module ✓
+        </button>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════════════════════
+     MODAL — ACP HELEN'S NOTES
+══════════════════════════════════════════════════════ -->
+<div id="acp-notes-modal" class="modal-backdrop" role="dialog" aria-modal="true" aria-labelledby="acp-notes-title">
+
+  <div class="modal-inner modal-wide">
+    <div style="height:5px; background:linear-gradient(90deg,var(--blue),var(--yellow));"></div>
+
+    <div class="modal-header" style="background:#0f1c34; border-bottom:1px solid rgba(255,255,255,0.07);">
+      <div style="display:flex; align-items:center; gap:14px;">
+        <div style="width:42px; height:42px; border-radius:10px; background:rgba(1,151,222,0.15); display:flex; align-items:center; justify-content:center; font-size:1.2rem;" aria-hidden="true">📋</div>
+        <div>
+          <div style="font-size:0.65rem; font-weight:700; letter-spacing:0.12em; text-transform:uppercase; color:var(--text-muted); margin-bottom:3px;">Reference</div>
+          <div id="acp-notes-title" style="font-family:'Merriweather',serif; font-size:1rem; font-weight:700; color:var(--white);">Helen's Clinical Notes</div>
+        </div>
+      </div>
+      <button class="modal-close" onclick="closeAcpModal()" aria-label="Close Helen's notes">✕</button>
+    </div>
+
+    <div class="modal-body">
+
+      <div class="acp-notes-grid">
+
+        <div class="acp-note-card">
+          <div class="acp-note-label">Personal</div>
+          <p>Full name: <strong>Helen Marsh</strong>. Date of birth: <strong>14 March 1951</strong> (age 75). Lives at home with husband <strong>Simon Marsh (68)</strong> and granddaughter <strong>Sophie Marsh (14)</strong>. Faith: <strong>Christian</strong> — faith is central to her coping.</p>
+        </div>
+
+        <div class="acp-note-card">
+          <div class="acp-note-label">Clinical</div>
+          <p>Stage 4 ovarian cancer with pulmonary metastases. Oxygen therapy 2L/min in place. Prognosis: weeks to months. DNR in place. Medication review due this visit.</p>
+        </div>
+
+        <div class="acp-note-card">
+          <div class="acp-note-label">What Matters to Helen</div>
+          <p>Helen values her <strong>dignity and privacy</strong> deeply. She does not want to be seen as a burden. She wants clinical discussions to take place sensitively, in her presence only. She prays regularly and finds faith her main source of peace.</p>
+        </div>
+
+        <div class="acp-note-card">
+          <div class="acp-note-label">Care Preferences</div>
+          <p>Helen has expressed a <strong>strong wish to remain at home</strong> for as long as possible. She has not formally stated a preferred place of death but has expressed she does not want to die in hospital. She would consider the hospice if home care is no longer manageable.</p>
+        </div>
+
+        <div class="acp-note-card">
+          <div class="acp-note-label">Family Context</div>
+          <p>Simon is primary carer — working night shifts while managing Helen's care, showing signs of <strong>carer strain</strong>. Sophie (14) has not been told the prognosis and is withdrawing — consider referral to youth bereavement services. Financial pressures noted (heating bills).</p>
+        </div>
+
+        <div class="acp-note-card">
+          <div class="acp-note-label">Documents in Place</div>
+          <p>DNR / DNACPR confirmed. No LPA on file yet — to be discussed. No formal ACP documented. Medication list attached to care record. ReSPECT form not yet completed.</p>
+        </div>
+
+      </div>
+
+    </div>
+
+    <div class="modal-footer">
+      <p>Use these notes to guide your completion of the Advance Care Plan.</p>
+      <button class="btn btn-primary" onclick="closeAcpModal()" aria-label="Close notes and return to form">
+        Return to Form →
+      </button>
+    </div>
+  </div>
+
+</div>
 <footer role="contentinfo">
   <div class="footer-copy">© 2026 St Barnabas Hospice · All rights reserved</div>
   <div class="footer-wcag">
@@ -605,7 +878,6 @@
     <span class="footer-wcag-text">Accessible e-learning</span>
   </div>
 </footer>
-
 
 <script src="js/scripts.js"></script>
 </body>
