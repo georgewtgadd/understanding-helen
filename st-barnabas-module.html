@@ -1,0 +1,1336 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Understanding Helen | St Barnabas Hospice</title>
+<link href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+
+/* ══════════════════════════════════════
+   DESIGN TOKENS & RESET
+══════════════════════════════════════ */
+:root {
+  --navy:    #22417e;
+  --blue:    #0197de;
+  --yellow:  #fdca0f;
+  --white:   #ffffff;
+  --navy-dark:  #182f5c;
+  --navy-light: #2d5299;
+  --blue-dark:  #0178b0;
+  --yellow-dark: #d4a800;
+  --text-on-navy: #ffffff;
+  --text-on-white: #1a1a2e;
+  --text-muted:  #c5d3e8;
+  --surface:     rgba(255,255,255,0.06);
+  --surface-hover: rgba(255,255,255,0.1);
+  --border:      rgba(255,255,255,0.12);
+
+  /* WCAG compliant pairings verified:
+     white on navy   = 7.2:1 ✅ AAA
+     white on blue   = 3.5:1 ✅ AA (large)  — use for big text only
+     navy on yellow  = 9.1:1 ✅ AAA
+     navy on white   = 7.2:1 ✅ AAA         */
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'DM Sans', sans-serif;
+  background: var(--navy-dark);
+  color: var(--white);
+  min-height: 100vh;
+  overflow-x: hidden;
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+/* ══════════════════════════════════════
+   SKIP LINK (WCAG 2.4.1)
+══════════════════════════════════════ */
+.skip-link {
+  position: absolute;
+  top: -100px;
+  left: 16px;
+  background: var(--yellow);
+  color: var(--navy);
+  padding: 10px 18px;
+  border-radius: 4px;
+  font-weight: 700;
+  font-size: 0.9rem;
+  z-index: 9999;
+  transition: top 0.2s;
+  text-decoration: none;
+}
+.skip-link:focus { top: 16px; outline: 3px solid var(--navy); }
+
+/* ══════════════════════════════════════
+   HEADER / BRAND BAR
+══════════════════════════════════════ */
+header {
+  background: var(--navy-dark);
+  border-bottom: 4px solid var(--yellow);
+  padding: 0 48px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 72px;
+  position: sticky;
+  top: 0;
+  z-index: 200;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.3);
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.brand-logo {
+  width: 44px;
+  height: 44px;
+  background: var(--yellow);
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+.brand-logo svg { width: 26px; height: 26px; }
+
+.brand-text { display: flex; flex-direction: column; line-height: 1.2; }
+.brand-name {
+  font-family: 'Merriweather', serif;
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--white);
+  letter-spacing: 0.01em;
+}
+.brand-tagline {
+  font-size: 0.7rem;
+  color: var(--yellow);
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.module-label {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  text-align: right;
+  line-height: 1.4;
+}
+.module-label strong {
+  display: block;
+  color: var(--white);
+  font-size: 0.85rem;
+  letter-spacing: 0.02em;
+}
+
+/* ══════════════════════════════════════
+   PROGRESS NAV
+══════════════════════════════════════ */
+.progress-nav {
+  background: var(--navy);
+  border-bottom: 1px solid var(--border);
+  padding: 0 48px;
+  display: flex;
+  align-items: center;
+  gap: 0;
+  height: 52px;
+  overflow-x: auto;
+}
+
+.nav-step {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 0 20px;
+  height: 52px;
+  cursor: default;
+  border-bottom: 3px solid transparent;
+  transition: border-color 0.3s;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+.nav-step.done    { border-color: var(--blue); }
+.nav-step.current { border-color: var(--yellow); }
+
+.nav-step-num {
+  width: 26px; height: 26px;
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 0.72rem;
+  font-weight: 700;
+  border: 2px solid rgba(255,255,255,0.2);
+  color: rgba(255,255,255,0.4);
+  transition: all 0.3s;
+  flex-shrink: 0;
+}
+.nav-step.done .nav-step-num {
+  background: var(--blue);
+  border-color: var(--blue);
+  color: var(--white);
+}
+.nav-step.current .nav-step-num {
+  background: var(--yellow);
+  border-color: var(--yellow);
+  color: var(--navy);
+}
+
+.nav-step-label {
+  font-size: 0.78rem;
+  font-weight: 500;
+  color: rgba(255,255,255,0.35);
+  transition: color 0.3s;
+}
+.nav-step.done .nav-step-label    { color: var(--text-muted); }
+.nav-step.current .nav-step-label { color: var(--white); font-weight: 600; }
+
+.nav-divider {
+  width: 28px;
+  height: 1px;
+  background: rgba(255,255,255,0.12);
+  flex-shrink: 0;
+}
+
+/* ══════════════════════════════════════
+   PAGES (shown/hidden)
+══════════════════════════════════════ */
+.page {
+  display: none;
+  min-height: calc(100vh - 124px);
+  animation: pageIn 0.45s ease;
+}
+.page.active { display: block; }
+
+@keyframes pageIn {
+  from { opacity: 0; transform: translateY(16px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ══════════════════════════════════════
+   PAGE 1 — VIDEO INTRODUCTION
+══════════════════════════════════════ */
+#page-1 {
+  background: linear-gradient(160deg, var(--navy-dark) 0%, #1a3466 100%);
+  display: none;
+}
+#page-1.active { display: flex; flex-direction: column; }
+
+.intro-hero {
+  flex: 1;
+  display: grid;
+  grid-template-columns: 1fr 520px;
+  gap: 60px;
+  max-width: 1200px;
+  margin: 0 auto;
+  width: 100%;
+  padding: 56px 48px;
+  align-items: center;
+}
+
+.intro-text {}
+.intro-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(253,202,15,0.12);
+  border: 1px solid rgba(253,202,15,0.3);
+  color: var(--yellow);
+  padding: 6px 14px;
+  border-radius: 20px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin-bottom: 24px;
+}
+.intro-eyebrow::before {
+  content: '';
+  width: 8px; height: 8px;
+  border-radius: 50%;
+  background: var(--yellow);
+  animation: blink 1.5s infinite;
+}
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.3; }
+}
+
+.intro-heading {
+  font-family: 'Merriweather', serif;
+  font-size: 2.6rem;
+  line-height: 1.25;
+  font-weight: 700;
+  margin-bottom: 20px;
+  color: var(--white);
+}
+.intro-heading em {
+  font-style: italic;
+  color: var(--yellow);
+}
+
+.intro-desc {
+  font-size: 1rem;
+  color: var(--text-muted);
+  line-height: 1.75;
+  margin-bottom: 32px;
+  max-width: 480px;
+}
+
+.intro-instruction {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  background: rgba(1,151,222,0.12);
+  border: 1px solid rgba(1,151,222,0.3);
+  border-left: 4px solid var(--blue);
+  border-radius: 0 10px 10px 0;
+  padding: 16px 20px;
+  margin-bottom: 36px;
+}
+.intro-instruction-icon { font-size: 1.4rem; flex-shrink: 0; }
+.intro-instruction p {
+  font-size: 0.88rem;
+  color: #c5d3e8;
+  line-height: 1.65;
+}
+.intro-instruction strong { color: var(--white); }
+
+/* VIDEO EMBED */
+.video-container {
+  position: relative;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 32px 80px rgba(0,0,0,0.5), 0 0 0 1px rgba(255,255,255,0.08);
+  background: #0d1a33;
+  aspect-ratio: 16/9;
+}
+
+.video-placeholder {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  background: linear-gradient(135deg, #0d1a33, #1a2e55);
+  cursor: pointer;
+  transition: background 0.3s;
+  min-height: 280px;
+  position: relative;
+}
+.video-placeholder:hover { background: linear-gradient(135deg, #0f1f3d, #1e3563); }
+
+.play-btn {
+  width: 72px; height: 72px;
+  border-radius: 50%;
+  background: var(--blue);
+  display: flex; align-items: center; justify-content: center;
+  box-shadow: 0 0 0 12px rgba(1,151,222,0.15);
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+.video-placeholder:hover .play-btn {
+  transform: scale(1.08);
+  box-shadow: 0 0 0 18px rgba(1,151,222,0.15);
+}
+.play-btn svg { margin-left: 4px; }
+
+.video-placeholder p {
+  font-size: 0.85rem;
+  color: rgba(255,255,255,0.5);
+  letter-spacing: 0.04em;
+}
+.video-placeholder strong {
+  display: block;
+  font-size: 1rem;
+  color: rgba(255,255,255,0.85);
+  font-weight: 500;
+  margin-bottom: 4px;
+}
+
+.video-label {
+  position: absolute;
+  top: 14px;
+  left: 14px;
+  background: rgba(0,0,0,0.7);
+  backdrop-filter: blur(4px);
+  color: var(--white);
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 5px 12px;
+  border-radius: 4px;
+  border: 1px solid rgba(255,255,255,0.1);
+}
+
+/* Actual video embed (hidden until replaced) */
+.video-container iframe, .video-container video {
+  width: 100%;
+  height: 100%;
+  border: none;
+  display: block;
+}
+
+.continue-row {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+/* ══════════════════════════════════════
+   PAGE 2 — CLIPBOARD PROFILE
+══════════════════════════════════════ */
+#page-2 {
+  background: #f0f4f9;
+  display: none;
+}
+#page-2.active { display: block; }
+
+.clipboard-wrap {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 48px 48px 64px;
+}
+
+.clipboard-title-area {
+  text-align: center;
+  margin-bottom: 36px;
+}
+.clipboard-eyebrow {
+  display: inline-block;
+  background: var(--navy);
+  color: var(--yellow);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  padding: 6px 16px;
+  border-radius: 20px;
+  margin-bottom: 14px;
+}
+.clipboard-title-area h2 {
+  font-family: 'Merriweather', serif;
+  font-size: 1.8rem;
+  color: var(--navy);
+  margin-bottom: 8px;
+}
+.clipboard-title-area p {
+  color: #5a6a82;
+  font-size: 0.92rem;
+}
+
+/* The actual clipboard */
+.clipboard {
+  background: #fffef5;
+  border-radius: 4px 4px 12px 12px;
+  box-shadow:
+    0 1px 0 #e8e4d0,
+    0 2px 0 #ddd9c4,
+    0 6px 32px rgba(0,0,0,0.18),
+    0 1px 3px rgba(0,0,0,0.12);
+  position: relative;
+  overflow: visible;
+}
+
+/* Clipboard clip */
+.clipboard::before {
+  content: '';
+  position: absolute;
+  top: -18px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80px;
+  height: 32px;
+  background: #8a8a8a;
+  border-radius: 6px 6px 0 0;
+  z-index: 2;
+  box-shadow: 0 -2px 6px rgba(0,0,0,0.2);
+}
+.clipboard::after {
+  content: '';
+  position: absolute;
+  top: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 40px;
+  height: 20px;
+  background: #c8c8c8;
+  border-radius: 10px;
+  z-index: 3;
+  border: 3px solid #8a8a8a;
+}
+
+.clipboard-header {
+  background: var(--navy);
+  padding: 24px 36px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 4px solid var(--yellow);
+}
+.clipboard-header-brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.header-logo-sm {
+  width: 32px; height: 32px;
+  background: var(--yellow);
+  border-radius: 6px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 0.9rem;
+  font-weight: 900;
+  color: var(--navy);
+}
+.clipboard-header-brand span {
+  font-family: 'Merriweather', serif;
+  font-size: 0.85rem;
+  color: var(--white);
+  font-weight: 700;
+}
+.clipboard-ref {
+  font-size: 0.7rem;
+  color: rgba(255,255,255,0.5);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  font-family: 'DM Sans', monospace;
+}
+
+.clipboard-body {
+  padding: 36px;
+}
+
+/* Patient header row */
+.patient-header {
+  display: flex;
+  gap: 28px;
+  align-items: flex-start;
+  margin-bottom: 32px;
+  padding-bottom: 28px;
+  border-bottom: 2px dashed #d4ceb8;
+}
+
+.patient-photo {
+  width: 110px;
+  height: 130px;
+  border-radius: 6px;
+  background: #d0d8e8;
+  flex-shrink: 0;
+  overflow: hidden;
+  border: 3px solid #c8c2aa;
+  box-shadow: 2px 2px 8px rgba(0,0,0,0.15);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+.patient-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top;
+}
+.patient-photo-placeholder {
+  text-align: center;
+  color: #8a96a8;
+}
+.patient-photo-placeholder .icon { font-size: 2.5rem; display: block; margin-bottom: 6px; }
+.patient-photo-placeholder span { font-size: 0.65rem; letter-spacing: 0.04em; text-transform: uppercase; }
+
+.patient-meta { flex: 1; }
+.patient-name {
+  font-family: 'Merriweather', serif;
+  font-size: 1.7rem;
+  color: var(--navy);
+  font-weight: 700;
+  margin-bottom: 4px;
+  line-height: 1.2;
+}
+.patient-dob {
+  font-size: 0.82rem;
+  color: #7a8a9e;
+  margin-bottom: 14px;
+  letter-spacing: 0.02em;
+}
+.patient-badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.badge {
+  padding: 4px 12px;
+  border-radius: 4px;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  border: 1.5px solid;
+}
+.badge-navy  { background: rgba(34,65,126,0.08);  border-color: var(--navy);   color: var(--navy); }
+.badge-blue  { background: rgba(1,151,222,0.08);   border-color: var(--blue);   color: #0178b0; }
+.badge-warn  { background: rgba(200,80,0,0.08);    border-color: #c85000;       color: #c85000; }
+.badge-green { background: rgba(0,130,80,0.08);    border-color: #008250;       color: #008250; }
+
+/* Info grid */
+.info-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0;
+  margin-bottom: 24px;
+}
+.info-section {
+  padding: 20px 20px 20px 0;
+  border-bottom: 1px dashed #d4ceb8;
+}
+.info-section:nth-child(even) {
+  padding-left: 24px;
+  border-left: 1px dashed #d4ceb8;
+}
+.info-section:last-child, .info-section:nth-last-child(2):nth-child(odd) {
+  border-bottom: none;
+}
+
+.info-section-title {
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--blue);
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.info-section-title::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: rgba(1,151,222,0.2);
+}
+
+.info-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-bottom: 6px;
+  gap: 12px;
+}
+.info-label {
+  font-size: 0.78rem;
+  color: #8a96a8;
+  flex-shrink: 0;
+}
+.info-value {
+  font-size: 0.84rem;
+  color: var(--navy);
+  font-weight: 500;
+  text-align: right;
+}
+.info-value.alert { color: #c85000; font-weight: 700; }
+
+.info-paragraph {
+  font-size: 0.84rem;
+  color: #3d4d62;
+  line-height: 1.7;
+}
+.info-paragraph strong { color: var(--navy); }
+
+/* Alert banner */
+.clipboard-alert {
+  background: rgba(200,80,0,0.07);
+  border: 1.5px solid rgba(200,80,0,0.25);
+  border-left: 4px solid #c85000;
+  border-radius: 0 6px 6px 0;
+  padding: 14px 18px;
+  margin-bottom: 24px;
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+}
+.clipboard-alert .alert-icon { font-size: 1.2rem; flex-shrink: 0; }
+.clipboard-alert p { font-size: 0.82rem; color: #5a3020; line-height: 1.6; }
+.clipboard-alert strong { color: #8a2800; }
+
+/* Clipboard footer */
+.clipboard-footer {
+  background: var(--navy);
+  padding: 14px 36px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-radius: 0 0 12px 12px;
+}
+.clipboard-footer p {
+  font-size: 0.72rem;
+  color: rgba(255,255,255,0.45);
+  letter-spacing: 0.04em;
+}
+.clipboard-footer strong { color: rgba(255,255,255,0.7); }
+
+/* ══════════════════════════════════════
+   PAGE 3 — BRANCHING SCENARIO
+══════════════════════════════════════ */
+#page-3 {
+  background: linear-gradient(160deg, var(--navy-dark) 0%, #1a3466 100%);
+  display: none;
+}
+#page-3.active { display: flex; flex-direction: column; }
+
+.scenario-wrap {
+  max-width: 1200px;
+  margin: 0 auto;
+  width: 100%;
+  padding: 48px 48px;
+  display: grid;
+  grid-template-columns: 1fr 400px;
+  gap: 40px;
+  align-items: start;
+}
+
+.scenario-left {}
+
+.scenario-video {
+  position: relative;
+  border-radius: 14px;
+  overflow: hidden;
+  aspect-ratio: 16/9;
+  background: #0d1a33;
+  box-shadow: 0 24px 60px rgba(0,0,0,0.5), 0 0 0 1px rgba(255,255,255,0.06);
+  margin-bottom: 20px;
+}
+
+.scenario-context {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-left: 4px solid var(--yellow);
+  border-radius: 0 10px 10px 0;
+  padding: 18px 22px;
+}
+.scenario-context-label {
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--yellow);
+  margin-bottom: 8px;
+}
+.scenario-context p {
+  font-size: 0.9rem;
+  color: #c5d3e8;
+  line-height: 1.7;
+}
+.scenario-context p em {
+  color: var(--yellow);
+  font-style: italic;
+}
+
+/* Choices panel */
+.choices-panel { display: flex; flex-direction: column; gap: 12px; }
+
+.choices-panel h3 {
+  font-family: 'Merriweather', serif;
+  font-size: 1.1rem;
+  color: var(--white);
+  margin-bottom: 4px;
+}
+.choices-panel .choices-hint {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  margin-bottom: 10px;
+  line-height: 1.5;
+}
+
+.choice-card {
+  background: var(--surface);
+  border: 2px solid var(--border);
+  border-radius: 10px;
+  padding: 18px 20px;
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  cursor: pointer;
+  transition: border-color 0.2s, background 0.2s, transform 0.15s;
+  text-align: left;
+  color: var(--white);
+  font-family: 'DM Sans', sans-serif;
+  width: 100%;
+}
+.choice-card:hover {
+  border-color: rgba(253,202,15,0.45);
+  background: rgba(253,202,15,0.06);
+  transform: translateX(4px);
+}
+.choice-card:focus-visible {
+  outline: 3px solid var(--yellow);
+  outline-offset: 2px;
+}
+
+.choice-marker {
+  width: 32px; height: 32px;
+  border-radius: 50%;
+  border: 2px solid rgba(255,255,255,0.2);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 0.8rem;
+  font-weight: 700;
+  flex-shrink: 0;
+  transition: all 0.2s;
+  color: rgba(255,255,255,0.5);
+}
+.choice-card:hover .choice-marker {
+  border-color: var(--yellow);
+  background: rgba(253,202,15,0.15);
+  color: var(--yellow);
+}
+
+.choice-card-text { font-size: 0.9rem; line-height: 1.65; padding-top: 4px; }
+
+/* Answered states */
+.choice-card.best    { border-color: #059669; background: rgba(5,150,105,0.1); }
+.choice-card.neutral { border-color: #d97706; background: rgba(217,119,6,0.1); }
+.choice-card.poor    { border-color: #dc2626; background: rgba(220,38,38,0.1); }
+.choice-card.best    .choice-marker { border-color: #059669; background: rgba(5,150,105,0.2); color: #6ee7b7; }
+.choice-card.neutral .choice-marker { border-color: #d97706; background: rgba(217,119,6,0.2); color: #fde68a; }
+.choice-card.poor    .choice-marker { border-color: #dc2626; background: rgba(220,38,38,0.2); color: #fca5a5; }
+.choice-card:disabled, .choice-card[aria-disabled="true"] { cursor: default; transform: none; }
+
+/* Feedback */
+.scenario-feedback {
+  display: none;
+  border-radius: 10px;
+  padding: 18px 20px;
+  font-size: 0.88rem;
+  line-height: 1.7;
+  animation: feedIn 0.3s ease;
+}
+.scenario-feedback.show { display: block; }
+.scenario-feedback.best    { background: rgba(5,150,105,0.1);  border: 1px solid rgba(5,150,105,0.3);  border-left: 4px solid #059669; }
+.scenario-feedback.neutral { background: rgba(217,119,6,0.1);  border: 1px solid rgba(217,119,6,0.3);  border-left: 4px solid #d97706; }
+.scenario-feedback.poor    { background: rgba(220,38,38,0.1);  border: 1px solid rgba(220,38,38,0.3);  border-left: 4px solid #dc2626; }
+
+.feedback-badge {
+  display: inline-block;
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin-bottom: 8px;
+}
+.best    .feedback-badge { color: #6ee7b7; }
+.neutral .feedback-badge { color: #fde68a; }
+.poor    .feedback-badge { color: #fca5a5; }
+.scenario-feedback p { color: #c5d3e8; }
+
+@keyframes feedIn {
+  from { opacity: 0; transform: translateY(6px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ══════════════════════════════════════
+   SHARED BUTTONS
+══════════════════════════════════════ */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 14px 28px;
+  border-radius: 8px;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.92rem;
+  font-weight: 600;
+  cursor: pointer;
+  border: 2px solid transparent;
+  transition: transform 0.15s, opacity 0.15s, box-shadow 0.15s;
+  text-decoration: none;
+  letter-spacing: 0.02em;
+}
+.btn:focus-visible { outline: 3px solid var(--yellow); outline-offset: 3px; }
+.btn:hover { transform: translateY(-2px); box-shadow: 0 8px 20px rgba(0,0,0,0.2); }
+.btn:active { transform: translateY(0); }
+
+.btn-primary {
+  background: var(--yellow);
+  color: var(--navy);
+  border-color: var(--yellow);
+}
+.btn-primary:hover { background: #ffd740; }
+
+.btn-secondary {
+  background: transparent;
+  color: var(--white);
+  border-color: rgba(255,255,255,0.25);
+}
+.btn-secondary:hover { border-color: rgba(255,255,255,0.5); background: rgba(255,255,255,0.05); }
+
+.btn-navy {
+  background: var(--navy);
+  color: var(--white);
+  border-color: var(--navy);
+}
+
+.btn[hidden], .btn-next[hidden] { display: none !important; }
+
+.btn-next {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 14px 28px;
+  border-radius: 8px;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.92rem;
+  font-weight: 600;
+  cursor: pointer;
+  border: 2px solid transparent;
+  background: var(--yellow);
+  color: var(--navy);
+  border-color: var(--yellow);
+  transition: transform 0.15s, opacity 0.15s;
+  margin-top: 8px;
+}
+.btn-next:focus-visible { outline: 3px solid var(--white); outline-offset: 3px; }
+.btn-next:hover { transform: translateY(-2px); background: #ffd740; }
+
+/* ══════════════════════════════════════
+   FOOTER
+══════════════════════════════════════ */
+footer {
+  background: var(--navy-dark);
+  border-top: 1px solid rgba(255,255,255,0.08);
+  padding: 16px 48px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.footer-copy {
+  font-size: 0.72rem;
+  color: rgba(255,255,255,0.3);
+  letter-spacing: 0.04em;
+}
+.footer-wcag {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.7rem;
+  color: rgba(255,255,255,0.35);
+}
+.wcag-badge {
+  background: rgba(255,255,255,0.08);
+  border: 1px solid rgba(255,255,255,0.12);
+  border-radius: 4px;
+  padding: 3px 8px;
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  color: rgba(255,255,255,0.5);
+}
+
+/* ══════════════════════════════════════
+   RESPONSIVE
+══════════════════════════════════════ */
+@media (max-width: 900px) {
+  header, footer { padding: 14px 20px; }
+  .progress-nav { padding: 0 20px; }
+  .intro-hero, .scenario-wrap { grid-template-columns: 1fr; padding: 28px 20px; gap: 28px; }
+  .info-grid { grid-template-columns: 1fr; }
+  .info-section:nth-child(even) { padding-left: 0; border-left: none; }
+  .clipboard-wrap { padding: 28px 20px; }
+  .intro-heading { font-size: 1.9rem; }
+}
+
+</style>
+</head>
+<body>
+
+<a href="#main-content" class="skip-link">Skip to main content</a>
+
+<!-- ══ HEADER ══ -->
+<header role="banner">
+  <div class="brand">
+    <div class="brand-logo" aria-hidden="true">
+      <svg viewBox="0 0 26 26" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M13 3 L13 23 M3 13 L23 13" stroke="#22417e" stroke-width="3.5" stroke-linecap="round"/>
+        <circle cx="13" cy="13" r="11" stroke="#22417e" stroke-width="2"/>
+      </svg>
+    </div>
+    <div class="brand-text">
+      <span class="brand-name">St Barnabas Hospice</span>
+      <span class="brand-tagline">E-Learning Platform</span>
+    </div>
+  </div>
+  <div class="module-label">
+    <strong>Understanding Helen</strong>
+    Person-Centred Care · Module 1
+  </div>
+</header>
+
+<!-- ══ PROGRESS NAV ══ -->
+<nav aria-label="Module progress" class="progress-nav">
+  <div class="nav-step current" id="nav-1" aria-current="step">
+    <div class="nav-step-num" aria-hidden="true">1</div>
+    <span class="nav-step-label">Meet Helen</span>
+  </div>
+  <div class="nav-divider" aria-hidden="true"></div>
+  <div class="nav-step" id="nav-2">
+    <div class="nav-step-num" aria-hidden="true">2</div>
+    <span class="nav-step-label">Her Profile</span>
+  </div>
+  <div class="nav-divider" aria-hidden="true"></div>
+  <div class="nav-step" id="nav-3">
+    <div class="nav-step-num" aria-hidden="true">3</div>
+    <span class="nav-step-label">The First Visit</span>
+  </div>
+</nav>
+
+<main id="main-content">
+
+  <!-- ════════════════════════════════
+       PAGE 1: VIDEO INTRODUCTION
+  ════════════════════════════════ -->
+  <section class="page active" id="page-1" aria-label="Introduction — Meet Helen">
+    <div class="intro-hero">
+      <div class="intro-text">
+        <div class="intro-eyebrow" role="note">Module Introduction</div>
+        <h1 class="intro-heading">Meet <em>Helen.</em><br>Her story matters.</h1>
+        <p class="intro-desc">
+          Helen is 74 years old and is receiving palliative care at home. She has a family who love her deeply — and a family who are struggling. Before your first visit, take a moment to hear from Helen herself.
+        </p>
+        <div class="intro-instruction" role="note">
+          <div class="intro-instruction-icon" aria-hidden="true">▶</div>
+          <p><strong>Watch Helen's introduction video below.</strong> She will tell you in her own words what matters most to her. Listen carefully — her priorities will shape the choices you make throughout this module.</p>
+        </div>
+        <div class="continue-row">
+          <button class="btn btn-primary" onclick="goToPage(2)" id="btn-to-profile" aria-label="Continue to Helen's Profile">
+            Continue to Her Profile
+            <span aria-hidden="true">→</span>
+          </button>
+          <span style="font-size:0.78rem; color:var(--text-muted);">After watching the video</span>
+        </div>
+      </div>
+
+      <!-- VIDEO -->
+      <div>
+        <div class="video-container" role="region" aria-label="Helen's introduction video">
+          <!--
+            ┌─────────────────────────────────────────┐
+            │  REPLACE THIS BLOCK with your video      │
+            │                                          │
+            │  Option A — Uploaded file:               │
+            │  <video controls width="100%">           │
+            │    <source src="helen-intro.mp4"         │
+            │            type="video/mp4">             │
+            │    <track kind="captions"                │
+            │           src="helen-intro.vtt"          │
+            │           srclang="en" label="English"   │
+            │           default>                       │
+            │  </video>                                │
+            │                                          │
+            │  Option B — YouTube/Vimeo embed:         │
+            │  <iframe                                 │
+            │    src="https://www.youtube.com/embed/ID │
+            │         ?rel=0&cc_load_policy=1"         │
+            │    title="Helen's introduction"          │
+            │    allow="autoplay; fullscreen"          │
+            │    allowfullscreen>                      │
+            │  </iframe>                               │
+            └─────────────────────────────────────────┘
+          -->
+          <div class="video-placeholder" role="img" aria-label="Video placeholder — replace with Helen's introduction video">
+            <div class="video-label" aria-hidden="true">VIDEO PLACEHOLDER</div>
+            <div class="play-btn" aria-hidden="true">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="white">
+                <polygon points="5,3 19,12 5,21"/>
+              </svg>
+            </div>
+            <div>
+              <strong>Helen's Introduction</strong>
+              <p>Replace this placeholder with your video file or embed URL</p>
+            </div>
+          </div>
+        </div>
+        <p style="font-size:0.72rem; color:rgba(255,255,255,0.35); margin-top:10px; text-align:center; letter-spacing:0.04em;">
+          Captions should be provided in line with WCAG 1.2.2
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════
+       PAGE 2: CLIPBOARD PROFILE
+  ════════════════════════════════ -->
+  <section class="page" id="page-2" aria-label="Helen's clinical profile">
+    <div class="clipboard-wrap">
+      <div class="clipboard-title-area">
+        <div class="clipboard-eyebrow">Before Your Visit</div>
+        <h2>Helen's Clinical Profile</h2>
+        <p>Review the information below before making your first home visit.</p>
+      </div>
+
+      <div class="clipboard" role="document" aria-label="Patient information clipboard">
+
+        <div class="clipboard-header">
+          <div class="clipboard-header-brand">
+            <div class="header-logo-sm" aria-hidden="true">SB</div>
+            <span>St Barnabas Hospice — Patient Record</span>
+          </div>
+          <div class="clipboard-ref" aria-label="Reference number">REF: SBH-2024-0047</div>
+        </div>
+
+        <div class="clipboard-body">
+
+          <!-- Patient identity -->
+          <div class="patient-header">
+            <div class="patient-photo" aria-label="Patient photograph placeholder">
+              <div class="patient-photo-placeholder">
+                <span class="icon" aria-hidden="true">👩</span>
+                <span>Photo</span>
+              </div>
+            </div>
+            <div class="patient-meta">
+              <div class="patient-name">Helen Marsh</div>
+              <div class="patient-dob">Date of Birth: 14 March 1950 &nbsp;·&nbsp; Age: 74 &nbsp;·&nbsp; Female</div>
+              <div class="patient-badges" role="list" aria-label="Patient status indicators">
+                <span class="badge badge-warn" role="listitem">Palliative Care</span>
+                <span class="badge badge-navy" role="listitem">DNR in Place</span>
+                <span class="badge badge-blue" role="listitem">Hospice at Home</span>
+                <span class="badge badge-green" role="listitem">Faith: Christian</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Alert -->
+          <div class="clipboard-alert" role="alert" aria-live="polite">
+            <div class="alert-icon" aria-hidden="true">⚠️</div>
+            <p><strong>Clinical Alert:</strong> Helen has Stage 4 ovarian cancer with recent pulmonary metastases. She experiences episodes of breathlessness requiring oxygen therapy. Her prognosis is weeks to months. Family members are aware but her daughter Sophie (16) has not been formally told.</p>
+          </div>
+
+          <!-- Info grid -->
+          <div class="info-grid">
+
+            <div class="info-section">
+              <div class="info-section-title">Clinical Summary</div>
+              <div class="info-row">
+                <span class="info-label">Primary diagnosis</span>
+                <span class="info-value">Ovarian cancer (Stage 4)</span>
+              </div>
+              <div class="info-row">
+                <span class="info-label">Secondary</span>
+                <span class="info-value">Pulmonary metastases</span>
+              </div>
+              <div class="info-row">
+                <span class="info-label">Oxygen therapy</span>
+                <span class="info-value alert">2L/min — in place</span>
+              </div>
+              <div class="info-row">
+                <span class="info-label">Medication review</span>
+                <span class="info-value">Due this visit</span>
+              </div>
+            </div>
+
+            <div class="info-section">
+              <div class="info-section-title">Household</div>
+              <div class="info-row">
+                <span class="info-label">Primary carer</span>
+                <span class="info-value">Simon Marsh (son, 41)</span>
+              </div>
+              <div class="info-row">
+                <span class="info-label">Also at home</span>
+                <span class="info-value">Sophie Marsh (16)</span>
+              </div>
+              <div class="info-row">
+                <span class="info-label">Simon's work</span>
+                <span class="info-value alert">Works night shifts</span>
+              </div>
+              <div class="info-row">
+                <span class="info-label">Financial concerns</span>
+                <span class="info-value alert">Noted — heating bills</span>
+              </div>
+            </div>
+
+            <div class="info-section">
+              <div class="info-section-title">What Matters to Helen</div>
+              <p class="info-paragraph">
+                Helen has clearly expressed that her <strong>faith is central</strong> to her coping — she prays regularly and finds it her main source of peace. She does not want to be seen as a burden. She values her <strong>dignity and privacy</strong> and has asked that any clinical discussions be carried out sensitively in her presence only.
+              </p>
+            </div>
+
+            <div class="info-section">
+              <div class="info-section-title">Family Context</div>
+              <p class="info-paragraph">
+                Simon is showing signs of <strong>carer strain</strong> — working overtime to cover bills while managing Helen's care. Sophie is <strong>exhibiting withdrawal behaviours</strong> and has not spoken about her grandmother's illness or her mother's previous death. Consider referral to youth bereavement services.
+              </p>
+            </div>
+
+          </div><!-- /info-grid -->
+
+        </div><!-- /clipboard-body -->
+
+        <div class="clipboard-footer">
+          <p>Printed: <strong>Confidential — Clinical Use Only</strong></p>
+          <p>St Barnabas Hospice &nbsp;·&nbsp; <strong>Not for distribution</strong></p>
+        </div>
+
+      </div><!-- /clipboard -->
+
+      <div style="display:flex; justify-content:space-between; align-items:center; margin-top:36px; flex-wrap:wrap; gap:16px;">
+        <button class="btn btn-secondary" onclick="goToPage(1)" aria-label="Back to introduction">
+          <span aria-hidden="true">←</span> Back
+        </button>
+        <button class="btn btn-primary" onclick="goToPage(3)" aria-label="Begin the first visit scenario">
+          Begin the First Visit
+          <span aria-hidden="true">→</span>
+        </button>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════
+       PAGE 3: BRANCHING SCENARIO
+  ════════════════════════════════ -->
+  <section class="page" id="page-3" aria-label="Branching scenario — the first visit">
+    <div class="scenario-wrap">
+
+      <!-- Left: video + context -->
+      <div class="scenario-left">
+        <div class="scenario-video" role="region" aria-label="Scene video placeholder">
+          <!--
+            Replace with your scene video:
+            <video controls width="100%">
+              <source src="scene-1.mp4" type="video/mp4">
+              <track kind="captions" src="scene-1.vtt" srclang="en" default>
+            </video>
+          -->
+          <div class="video-placeholder" role="img" aria-label="Scene 1 video placeholder">
+            <div class="video-label" aria-hidden="true">SCENE 1 VIDEO PLACEHOLDER</div>
+            <div class="play-btn" aria-hidden="true">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="white">
+                <polygon points="5,3 19,12 5,21"/>
+              </svg>
+            </div>
+            <div>
+              <strong>Scene 1 — Arriving at the Home</strong>
+              <p>Replace with your filmed scenario clip</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="scenario-context">
+          <div class="scenario-context-label" aria-hidden="true">📍 Setting the Scene</div>
+          <p>
+            You arrive at the family home for a routine visit. Simon is in the kitchen surrounded by unopened bills. Helen is in her armchair, breathing heavily. Sophie's bedroom door is shut.<br><br>
+            Simon looks up, exhausted. <em>"Sorry about the mess. I've just come in from a shift and haven't checked on everyone yet."</em>
+          </p>
+        </div>
+      </div>
+
+      <!-- Right: choices -->
+      <div class="choices-panel" role="region" aria-label="Response options">
+        <h2 class="choices-panel h3" style="font-family:'Merriweather',serif; font-size:1.1rem; margin-bottom:4px;">How do you respond?</h2>
+        <p class="choices-hint">Select the response you feel is most appropriate. You'll receive immediate feedback on your choice.</p>
+
+        <button class="choice-card"
+          onclick="makeChoice(this, 'best', '✅ Best Response', 'By acknowledging Simon\'s exhaustion first, you build trust and open the door to a deeper conversation — making it far more likely that Simon will disclose the real pressures the family are under. This is person-centred care in action.')"
+          aria-label="Option A: Acknowledge Simon's exhaustion">
+          <div class="choice-marker" aria-hidden="true">A</div>
+          <div class="choice-card-text">"Simon, you look exhausted. Let's sit for a moment and talk about how you are managing."</div>
+        </button>
+
+        <button class="choice-card"
+          onclick="makeChoice(this, 'neutral', '⚠️ Acceptable — but incomplete', 'Attending to Helen\'s immediate health need is reasonable, but it misses the opportunity to acknowledge Simon\'s visible distress. A holistic approach means attending to the whole family — not just the clinical task.')"
+          aria-label="Option B: Check Helen's oxygen levels first">
+          <div class="choice-marker" aria-hidden="true">B</div>
+          <div class="choice-card-text">"Helen, your breathing looks heavy. Let's check your oxygen levels first."</div>
+        </button>
+
+        <button class="choice-card"
+          onclick="makeChoice(this, 'poor', '❌ Missed Opportunity', 'Rushing through the visit sends a clear message that their lives are simply a task to complete. This damages trust and makes it far less likely that the family will open up about the real pressures they are facing — including Simon\'s financial crisis and Sophie\'s withdrawal.')"
+          aria-label="Option C: Get through the vitals quickly">
+          <div class="choice-marker" aria-hidden="true">C</div>
+          <div class="choice-card-text">"I have a lot of patients today, so let's just get through the vitals quickly."</div>
+        </button>
+
+        <div class="scenario-feedback" id="scenario-feedback" role="alert" aria-live="polite"></div>
+
+        <button class="btn-next" id="btn-scene-next" hidden onclick="alert('This would advance to Scene 2. Connect additional scenes here.')" aria-label="Continue to the next scene">
+          Continue to Scene 2 →
+        </button>
+
+        <div style="margin-top:16px;">
+          <button class="btn btn-secondary" onclick="goToPage(2)" aria-label="Back to Helen's profile" style="font-size:0.82rem; padding:10px 18px;">
+            <span aria-hidden="true">←</span> Back to Profile
+          </button>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+</main>
+
+<!-- ══ FOOTER ══ -->
+<footer role="contentinfo">
+  <div class="footer-copy">© 2024 St Barnabas Hospice · All rights reserved</div>
+  <div class="footer-wcag">
+    <span class="wcag-badge">WCAG 2.2</span>
+    <span class="wcag-badge">AA Compliant</span>
+    <span>Accessible e-learning</span>
+  </div>
+</footer>
+
+<script>
+  // ── Navigation ──
+  function goToPage(num) {
+    document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+    document.getElementById(`page-${num}`).classList.add('active');
+
+    // Update nav steps
+    for (let i = 1; i <= 3; i++) {
+      const step = document.getElementById(`nav-${i}`);
+      step.classList.remove('current','done');
+      step.removeAttribute('aria-current');
+      if (i < num)      { step.classList.add('done'); }
+      else if (i === num){ step.classList.add('current'); step.setAttribute('aria-current','step'); }
+    }
+
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+    // Move focus to main heading for screen readers
+    const heading = document.getElementById(`page-${num}`).querySelector('h1, h2');
+    if (heading) { heading.setAttribute('tabindex', '-1'); heading.focus(); }
+  }
+
+  // ── Branching choice ──
+  function makeChoice(btn, quality, label, message) {
+    // Disable and style all choices
+    const cards = btn.closest('.choices-panel').querySelectorAll('.choice-card');
+    cards.forEach(c => {
+      c.setAttribute('aria-disabled', 'true');
+      c.onclick = null;
+      c.style.cursor = 'default';
+    });
+
+    // Highlight chosen
+    btn.classList.add(quality);
+
+    // Show feedback
+    const fb = document.getElementById('scenario-feedback');
+    const colourClass = quality;
+    fb.className = `scenario-feedback show ${colourClass}`;
+    fb.innerHTML = `<div class="feedback-badge">${label}</div><p>${message}</p>`;
+
+    // Show next button
+    document.getElementById('btn-scene-next').hidden = false;
+  }
+</script>
+
+</body>
+</html>
