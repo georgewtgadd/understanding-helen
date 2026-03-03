@@ -994,24 +994,120 @@ footer {
 }
 
 /* ── RESPONSIVE ─────────────────────────────────────── */
+/* ══════════════════════════════════════════════════════
+   RESPONSIVE
+══════════════════════════════════════════════════════ */
+
+/* ── 900px: tablet ───────────────────────────────────── */
 @media (max-width: 900px) {
-  header, footer                 { padding: 14px 20px; }
+  /* Header */
+  header                         { padding: 0 20px; height: 60px; }
+  .brand-logo                    { width: 90px; height: 40px; }
+  .brand-name                    { font-size: 0.88rem; }
+  .brand-tagline                 { font-size: 0.62rem; }
+  .module-label                  { font-size: 0.66rem; }
+  .module-label strong           { font-size: 0.75rem; }
+
+  /* Nav */
   .progress-nav                  { padding: 0 12px; }
   .nav-step                      { padding: 0 8px; gap: 6px; }
   .nav-step-label                { display: none; }
   .nav-divider                   { width: 12px; }
   .module-progress-bar           { padding: 0 20px; }
+
+  /* Pages */
   .intro-hero, .scenario-wrap    { grid-template-columns: 1fr; padding: 28px 20px; gap: 28px; }
   .info-grid                     { grid-template-columns: 1fr; }
   .info-section:nth-child(even)  { padding-left: 0; border-left: none; }
   .clipboard-wrap                { padding: 28px 20px; }
   .hotspot-wrap                  { padding: 28px 20px; }
-  .intro-heading                 { font-size: 1.9rem; }
   .pillars-wrap                  { padding: 28px 20px 40px; }
   .pillars-row                   { gap: 10px; padding: 0 8px; }
   .pillar-col                    { width: 72px; }
   .p-shaft                       { height: 160px; }
   .p-label                       { font-size: 0.6rem; }
+
+  /* Typography scaling */
+  .intro-heading                 { font-size: 1.9rem; }
+  .pillars-page-title            { font-size: 1.6rem; }
+  .sophie-heading                { font-size: 1.6rem; }
+}
+
+/* ── 640px: mobile ───────────────────────────────────── */
+@media (max-width: 640px) {
+  /* Header — collapse to logo only */
+  header                         { padding: 0 16px; height: 56px; }
+  .brand-text                    { display: none; }
+  .brand-logo                    { width: 100px; height: 44px; }
+  .module-label                  { display: none; }
+
+  /* Nav — numbers only, tighter */
+  .progress-nav                  { padding: 0 8px; min-height: 44px; }
+  .nav-step                      { padding: 0 4px; gap: 0; }
+  .nav-step-num                  { width: 22px; height: 22px; font-size: 0.65rem; }
+  .nav-divider                   { width: 6px; min-width: 4px; }
+
+  /* Progress bar */
+  .module-progress-bar           { padding: 6px 16px; }
+  .progress-label                { font-size: 0.65rem; }
+
+  /* Page padding */
+  .intro-hero                    { padding: 24px 16px; gap: 24px; }
+  .clipboard-wrap                { padding: 20px 16px; }
+  .scenario-wrap                 { padding: 20px 16px; gap: 20px; }
+  .hotspot-wrap                  { padding: 20px 16px; }
+  .pillars-wrap                  { padding: 20px 16px 36px; }
+  .sophie-wrap                   { padding: 24px 16px 40px; }
+  .acp-wrap                      { padding: 24px 16px 40px; }
+
+  /* Typography */
+  .intro-heading                 { font-size: 1.5rem; line-height: 1.3; }
+  .intro-desc                    { font-size: 0.88rem; }
+  .pillars-page-title            { font-size: 1.4rem; }
+  .pillars-page-sub              { font-size: 0.84rem; }
+  .sophie-heading                { font-size: 1.4rem; }
+  .sophie-body                   { font-size: 0.88rem; }
+  .clipboard-title-area h2       { font-size: 1.4rem; }
+
+  /* Clipboard */
+  .patient-name                  { font-size: 1.3rem; }
+  .patient-dob                   { font-size: 0.72rem; }
+  .clipboard-header              { flex-direction: column; align-items: flex-start; gap: 6px; }
+  .clipboard-footer              { flex-direction: column; gap: 4px; }
+
+  /* Scenario */
+  .choices-panel                 { padding: 20px 16px; }
+  .choice-card                   { padding: 12px 14px; }
+  .choice-card-text              { font-size: 0.84rem; }
+
+  /* Pillar building */
+  .pillars-row                   { gap: 6px; }
+  .pillar-col                    { width: 58px; }
+  .p-shaft                       { height: 130px; }
+  .p-icon                        { font-size: 1rem; }
+  .p-label                       { font-size: 0.52rem; }
+  .entablature-title             { font-size: 0.72rem; }
+  .entablature-sub               { font-size: 0.55rem; }
+
+  /* Sophie layout */
+  .sophie-layout                 { grid-template-columns: 1fr; gap: 28px; }
+  .sophie-image-frame            { aspect-ratio: 4/3; }
+
+  /* ACP form */
+  .acp-field-row                 { grid-template-columns: 1fr; }
+  .acp-table-row                 { grid-template-columns: 1fr 1fr; }
+  .acp-checklist                 { grid-template-columns: 1fr; padding: 12px 16px; }
+  .acp-section-header            { padding: 12px 16px; }
+  .acp-fields                    { padding: 14px 16px; }
+
+  /* Pillar modal */
+  .pillar-section-row            { grid-template-columns: 1fr; }
+
+  /* ACP notes modal */
+  .acp-notes-grid                { grid-template-columns: 1fr; }
+
+  /* Float button */
+  .acp-float-btn                 { bottom: 16px; right: 16px; padding: 11px 16px; font-size: 0.8rem; }
 }
 
 /* ── MODAL WIDE VARIANT ─────────────────────────────── */
@@ -1172,15 +1268,7 @@ option { background: #1a2e52; color: white; }
 }
 
 /* ── RESPONSIVE ADDITIONS ───────────────────────────── */
-@media (max-width: 900px) {
-  .pillar-section-row      { grid-template-columns: 1fr; }
-  .acp-wrap                { padding: 28px 20px 40px; }
-  .acp-field-row           { grid-template-columns: 1fr; }
-  .acp-table-row           { grid-template-columns: 1fr 1fr; }
-  .acp-checklist           { grid-template-columns: 1fr; }
-  .acp-notes-grid          { grid-template-columns: 1fr; }
-  .acp-form-footer         { flex-direction: column; align-items: flex-start; }
-}
+
 
 /* ══════════════════════════════════════════════════════
    PAGE 6 — SOPHIE & CLAIRE
@@ -1395,7 +1483,4 @@ body.acp-notes-visible .acp-float-btn { display: flex; }
 /* ══════════════════════════════════════════════════════
    RESPONSIVE — SOPHIE & ACP SIDEBAR
 ══════════════════════════════════════════════════════ */
-@media (max-width: 900px) {
-  .sophie-layout      { grid-template-columns: 1fr; }
-  .sophie-wrap        { padding: 28px 20px 48px; }
-}
+
